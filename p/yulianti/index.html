@@ -1,0 +1,1523 @@
+---
+layout: null
+permalink: /yulianti/
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ============================================ -->
+    <!-- SEO OTOMATIS (FOKUS GOOGLE BOT)              -->
+    <!-- ============================================ -->
+    <script>
+    (function() {
+        var hostname = location.hostname;
+        var urlParams = new URLSearchParams(location.search);
+        var query = urlParams.get("q");
+
+        var parts = hostname.split(".");
+        var tldParts = 2;
+        var rawName = parts.slice(0, Math.max(1, parts.length - tldParts)).join("-");
+        if (rawName.toLowerCase() === "www") {
+            rawName = parts.slice(1, Math.max(2, parts.length - tldParts)).join("-");
+        }
+        var fullName = rawName;
+
+        var formatText = function(str) {
+            return str.replace(/[-_]/g, " ").replace(/\+/g, " ").replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+        };
+
+        var displayDomain = formatText(fullName);
+        var titleText = "";
+        var descText = "";
+
+        if (query) {
+            query = decodeURIComponent(query.replace(/\+/g, " "));
+            var cleanQuery = formatText(query);
+            titleText = cleanQuery + " on " + displayDomain;
+            descText = cleanQuery + " - Complete archive on " + displayDomain + ". Latest updates and exclusive content.";
+        } else {
+            titleText = displayDomain;
+            descText = displayDomain + " - Latest updates and exclusive content.";
+        }
+
+        document.title = titleText;
+
+        var metaDesc = document.querySelector("meta[name=\"description\"]") || document.createElement("meta");
+        metaDesc.name = "description";
+        metaDesc.content = descText;
+        if (!metaDesc.parentNode) document.head.appendChild(metaDesc);
+
+        var metaAuthor = document.querySelector("meta[name=\"author\"]") || document.createElement("meta");
+        metaAuthor.name = "author";
+        metaAuthor.content = displayDomain;
+        if (!metaAuthor.parentNode) document.head.appendChild(metaAuthor);
+
+        var metaKeywords = document.querySelector("meta[name=\"keywords\"]") || document.createElement("meta");
+        metaKeywords.name = "keywords";
+        metaKeywords.content = "";
+        metaKeywords.id = "dynamic-keywords";
+        if (!metaKeywords.parentNode) document.head.appendChild(metaKeywords);
+
+        var metaNews = document.querySelector("meta[name=\"news_keywords\"]") || document.createElement("meta");
+        metaNews.name = "news_keywords";
+        metaNews.content = "";
+        metaNews.id = "dynamic-news-keywords";
+        if (!metaNews.parentNode) document.head.appendChild(metaNews);
+
+        var canonical = document.querySelector("link[rel=\"canonical\"]") || document.createElement("link");
+        canonical.setAttribute("rel", "canonical");
+        canonical.setAttribute("href", location.href);
+        if (!canonical.parentNode) document.head.appendChild(canonical);
+
+        var schemaData = {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": displayDomain,
+            "url": location.origin + "/yulianti/",
+            "description": descText,
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": location.origin + "/yulianti/?q={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
+        };
+        var schemaScript = document.createElement("script");
+        schemaScript.type = "application/ld+json";
+        schemaScript.id = "schema-website";
+        schemaScript.textContent = JSON.stringify(schemaData);
+        document.head.appendChild(schemaScript);
+    })();
+    </script>
+
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+{% include head.html %}
+{% include verif.html %}
+</head>
+<body>
+<div loading="lazy">
+
+    <!-- ============================================ -->
+    <!-- KONDISI 1: HOMEPAGE (TANPA QUERY)            -->
+    <!-- ============================================ -->
+    <div id="homepage">
+        
+        <header id="blogHeader" class="blog-header-main floating-header-main" loading="lazy">
+            <div class="header-content-main">
+                <div id="domainAvatar" class="domain-avatar-main" style="flex-shrink:0;margin-right:10px;"></div>
+                <h1 id="blogMainTitle" class="blog-title-main"></h1>
+                <div class="nav-actions-main">
+                    <button class="nav-button-main menu-btn-main" id="blogMenuToggle" title="Menu" aria-label="Menu">
+                        <svg id="blogIconMenu" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="menu-icon-main">
+                            <path d="M3 6h18M3 12h18M3 18h18"/>
+                        </svg>
+                        <svg id="blogIconClose" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="menu-icon-main" style="display:none;">
+                            <path d="M6 6l12 12M6 18l12-12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div id="blogMenuPanel">
+            <ul>
+                <li><a href="/yulianti/">Home</a></li>
+                <li><a href="/contact/">Contact</a></li>
+                <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                <li><a href="/terms-and-conditions/">Terms and Conditions</a></li>
+            </ul>
+        </div>
+
+        <script>
+        (function() {
+            var hostname = window.location.hostname;
+            var parts = hostname.split(".");
+            var tldParts = 2;
+            var rawName = parts.slice(0, Math.max(1, parts.length - tldParts)).join("-");
+            if (rawName.toLowerCase() === "www") {
+                rawName = parts.slice(1, Math.max(2, parts.length - tldParts)).join("-");
+            }
+            var fullName = rawName;
+
+            function hashString(str) {
+                var hash = 0;
+                for (var i = 0; i < str.length; i++) {
+                    hash = ((hash << 5) - hash) + str.charCodeAt(i);
+                    hash |= 0;
+                }
+                return Math.abs(hash);
+            }
+            var domainHash = hashString(fullName);
+
+            var clean = fullName.replace(/-/g, " ");
+            var title = clean.replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+            document.getElementById("blogMainTitle").textContent = title;
+
+            var hue = domainHash % 360;
+            function hslToHex(h, s, l) {
+                h = h % 360; s = s / 100; l = l / 100;
+                var c = (1 - Math.abs(2 * l - 1)) * s;
+                var x = c * (1 - Math.abs((h / 60) % 2 - 1));
+                var m = l - c / 2;
+                var r, g, b;
+                if (h < 60) { r = c; g = x; b = 0; }
+                else if (h < 120) { r = x; g = c; b = 0; }
+                else if (h < 180) { r = 0; g = c; b = x; }
+                else if (h < 240) { r = 0; g = x; b = c; }
+                else if (h < 300) { r = x; g = 0; b = c; }
+                else { r = c; g = 0; b = x; }
+                r = Math.round((r + m) * 255);
+                g = Math.round((g + m) * 255);
+                b = Math.round((b + m) * 255);
+                return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+            }
+            var avatarBg = hslToHex(hue, 60, 50);
+
+            var words = fullName.split("-");
+            var initials = "";
+            for (var w = 0; w < Math.min(words.length, 3); w++) {
+                if (words[w].length > 0) initials += words[w].charAt(0).toUpperCase();
+            }
+            if (initials.length < 2) initials = fullName.substring(0, 3).toUpperCase();
+
+            var avatarSize = 40;
+            var avatarHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"" + avatarSize + "\" height=\"" + avatarSize + "\" viewBox=\"0 0 " + avatarSize + " " + avatarSize + "\">";
+            avatarHTML += "<rect width=\"" + avatarSize + "\" height=\"" + avatarSize + "\" rx=\"" + (avatarSize/2) + "\" fill=\"" + avatarBg + "\"/>";
+            avatarHTML += "<text x=\"" + (avatarSize/2) + "\" y=\"" + (avatarSize/2 + 6) + "\" text-anchor=\"middle\" fill=\"#ffffff\" font-size=\"" + (avatarSize/2.2) + "\" font-weight=\"bold\" font-family=\"-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif\">" + initials + "</text>";
+            avatarHTML += "</svg>";
+            document.getElementById("domainAvatar").innerHTML = avatarHTML;
+
+            var headerBgOptions = ["#ffffff","#fafafa","#f8f6f2","#f5f5f5","#fffef9","#f0f0f0"];
+            var textColorOptions = ["#000000","#1a1a1a","#0d1b2a","#111111","#1c1c1c","#222222"];
+            var shadowOptions = [
+                "0 2px 10px rgba(0,0,0,0.08)","0 1px 6px rgba(0,0,0,0.06)",
+                "0 3px 14px rgba(0,0,0,0.10)","0 2px 8px rgba(0,0,0,0.04)",
+                "0 4px 16px rgba(0,0,0,0.12)","0 1px 3px rgba(0,0,0,0.08)"
+            ];
+            var headerBorderOptions = ["none","none","none","1px solid #e0e0e0","1px solid #eee","none"];
+
+            var headerBg = headerBgOptions[domainHash % headerBgOptions.length];
+            var textColor = textColorOptions[domainHash % textColorOptions.length];
+            var shadow = shadowOptions[domainHash % shadowOptions.length];
+            var borderBottom = headerBorderOptions[domainHash % headerBorderOptions.length];
+
+            var header = document.getElementById("blogHeader");
+            var titleEl = document.getElementById("blogMainTitle");
+            var menuBtn = document.getElementById("blogMenuToggle");
+            var menuIcons = document.querySelectorAll(".menu-icon-main");
+
+            if (header) { header.style.background = headerBg; header.style.boxShadow = shadow; header.style.borderBottom = borderBottom; }
+            if (titleEl) { titleEl.style.color = textColor; }
+            if (menuBtn) { menuBtn.style.color = textColor; }
+            menuIcons.forEach(function(icon) { icon.style.stroke = textColor; });
+
+            var panelRadiusOptions = ["8px","10px","12px","6px","14px","4px"];
+            var panelShadowOptions = [
+                "0 4px 20px rgba(0,0,0,0.12)","0 2px 12px rgba(0,0,0,0.10)",
+                "0 6px 24px rgba(0,0,0,0.14)","0 3px 16px rgba(0,0,0,0.08)",
+                "0 5px 22px rgba(0,0,0,0.13)","0 4px 18px rgba(0,0,0,0.11)"
+            ];
+            var menuPanel = document.getElementById("blogMenuPanel");
+            if (menuPanel) {
+                menuPanel.style.borderRadius = panelRadiusOptions[domainHash % panelRadiusOptions.length];
+                menuPanel.style.boxShadow = panelShadowOptions[domainHash % panelShadowOptions.length];
+            }
+
+            var layoutIndex = domainHash % 6;
+            var homepageContent = document.querySelector(".homepage-content");
+            if (homepageContent) {
+                var contentBgOptions = ["#ffffff","#fafafa","#f8f8f8","#fffef9","#f5f5f5","#fcfcfc"];
+                homepageContent.style.background = contentBgOptions[domainHash % contentBgOptions.length];
+            }
+
+            var postCards = document.querySelectorAll(".post-item");
+            var accentColor = hslToHex(hue, 60, 45);
+            var accentLight = hslToHex(hue, 40, 90);
+            var accentBg = hslToHex(hue, 20, 96);
+
+            postCards.forEach(function(card, index) {
+                switch(layoutIndex) {
+                    case 0: card.style.borderLeft = "3px solid " + accentColor; card.style.borderRadius = "4px 8px 8px 4px"; break;
+                    case 1: card.style.borderTop = "3px solid " + accentColor; card.style.borderRadius = "4px 4px 8px 8px"; break;
+                    case 2: card.style.boxShadow = "0 2px 8px " + accentColor + "15"; card.style.border = "1px solid " + accentColor + "30"; break;
+                    case 3: card.style.borderLeft = "5px solid " + accentColor; card.style.borderRadius = "2px 6px 6px 2px"; card.style.background = accentBg; break;
+                    case 4: card.style.boxShadow = "0 3px 12px " + accentColor + "20"; card.style.border = "1px solid " + accentColor + "25"; card.style.borderRadius = "10px"; break;
+                    case 5: card.style.border = "none"; card.style.borderBottom = "1px solid #eee"; card.style.borderRadius = "0"; card.style.boxShadow = "none"; card.style.padding = "16px 0"; break;
+                }
+                var catEls = card.querySelectorAll(".meta .cat");
+                var labelEls = card.querySelectorAll(".meta .label");
+                var tagEls = card.querySelectorAll(".meta .tag");
+                catEls.forEach(function(el) { el.style.background = accentLight; el.style.color = accentColor; el.style.border = "1px solid " + accentColor + "40"; });
+                labelEls.forEach(function(el) {
+                    var hue2 = (hue + 60) % 360;
+                    var labelColor = hslToHex(hue2, 50, 40);
+                    var labelLight = hslToHex(hue2, 30, 92);
+                    el.style.background = labelLight; el.style.color = labelColor; el.style.border = "1px solid " + labelColor + "40";
+                });
+                tagEls.forEach(function(el) {
+                    var hue3 = (hue + 180) % 360;
+                    el.style.background = "#f5f5f5"; el.style.color = hslToHex(hue3, 30, 45); el.style.border = "1px solid #ddd";
+                });
+            });
+
+            var sectionLabel = document.querySelector(".section-label");
+            if (sectionLabel) {
+                var labelStyles = [
+                    "font-size:14px;color:" + accentColor + ";",
+                    "font-size:16px;text-transform:uppercase;letter-spacing:1px;",
+                    "font-size:13px;color:" + textColor + ";border-bottom:2px solid " + accentColor + ";display:inline-block;padding-bottom:4px;",
+                    "font-size:15px;background:" + accentLight + ";padding:6px 16px;border-radius:20px;display:inline-block;",
+                    "font-size:14px;font-style:italic;",
+                    "font-size:18px;font-weight:700;"
+                ];
+                sectionLabel.setAttribute("style", labelStyles[domainHash % labelStyles.length]);
+            }
+
+            var postContainer = document.getElementById("postList");
+            if (postContainer) {
+                if (layoutIndex === 1) { postContainer.style.display = "grid"; postContainer.style.gridTemplateColumns = "repeat(2, 1fr)"; postContainer.style.gap = "16px"; }
+                else if (layoutIndex === 2) { postContainer.style.display = "grid"; postContainer.style.gridTemplateColumns = "repeat(3, 1fr)"; postContainer.style.gap = "12px"; }
+                else { postContainer.style.display = "block"; }
+            }
+
+            var toggleBtnBlog = document.getElementById("blogMenuToggle");
+            var iconMenuBlog = document.getElementById("blogIconMenu");
+            var iconCloseBlog = document.getElementById("blogIconClose");
+
+            function updateBlogMenuPosition() {
+                if (menuPanel && menuPanel.style.display === "block" && toggleBtnBlog) {
+                    var btnRect = toggleBtnBlog.getBoundingClientRect();
+                    menuPanel.style.top = (btnRect.bottom + 5) + "px";
+                    menuPanel.style.right = (window.innerWidth - btnRect.right) + "px";
+                }
+            }
+
+            if (toggleBtnBlog && menuPanel && iconMenuBlog && iconCloseBlog) {
+                toggleBtnBlog.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    var isVisible = menuPanel.style.display === "block";
+                    menuPanel.style.display = isVisible ? "none" : "block";
+                    iconMenuBlog.style.display = isVisible ? "inline" : "none";
+                    iconCloseBlog.style.display = isVisible ? "none" : "inline";
+                    if (!isVisible) updateBlogMenuPosition();
+                });
+                document.addEventListener("click", function(e) {
+                    if (!menuPanel.contains(e.target) && !toggleBtnBlog.contains(e.target) && menuPanel.style.display === "block") {
+                        menuPanel.style.display = "none"; iconMenuBlog.style.display = "inline"; iconCloseBlog.style.display = "none";
+                    }
+                });
+                document.addEventListener("keydown", function(e) {
+                    if (e.key === "Escape" && menuPanel.style.display === "block") {
+                        menuPanel.style.display = "none"; iconMenuBlog.style.display = "inline"; iconCloseBlog.style.display = "none";
+                    }
+                });
+                window.addEventListener("resize", updateBlogMenuPosition);
+                window.addEventListener("scroll", updateBlogMenuPosition);
+                window.addEventListener("load", updateBlogMenuPosition);
+            }
+        })();
+        </script>
+
+        <style>
+        .blog-header-main.floating-header-main {
+            display:flex;align-items:center;justify-content:space-between;
+            padding:12px 16px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,0.08);
+            box-sizing:border-box;position:fixed;top:0;left:0;right:0;z-index:1001;
+        }
+        .header-content-main{
+            display:flex;align-items:center;justify-content:space-between;
+            width:100%;max-width:1200px;margin:0 auto;gap:16px;
+        }
+        .domain-avatar-main{flex-shrink:0;line-height:0;}
+        .blog-title-main{
+            margin:0;font-size:20px;color:#000;flex:1;
+            white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+            font-weight:700;letter-spacing:-0.02em;line-height:1.2;
+        }
+        .nav-actions-main{flex-shrink:0;margin:0;}
+        .menu-btn-main{
+            display:flex;align-items:center;justify-content:center;
+            width:36px;height:36px;background:transparent;border:none;
+            color:#000;padding:0;cursor:pointer;border-radius:0;transition:opacity 0.2s ease;
+        }
+        .menu-btn-main:hover{opacity:0.6;background:transparent;}
+        .menu-btn-main:active{opacity:0.4;}
+        .menu-icon-main{
+            width:24px;height:24px;stroke:#000000;fill:none;
+            stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;
+        }
+        #blogMenuPanel{
+            display:none;background:#fff;border:1px solid #e0e0e0;
+            padding:16px;position:fixed;z-index:1000;
+            box-shadow:0 4px 20px rgba(0,0,0,0.12);border-radius:10px;
+        }
+        #blogMenuPanel ul{list-style:none;margin:0;padding:0;}
+        #blogMenuPanel li{margin:0;padding:0;}
+        #blogMenuPanel a{
+            color:#000;text-decoration:none;display:block;border-radius:6px;
+            transition:all 0.2s ease;font-weight:500;white-space:nowrap;
+        }
+        #blogMenuPanel a:hover{background:rgba(0,0,0,0.05);}
+        .header-spacer{height:60px;}
+        .homepage-content{max-width:1200px;margin:0 auto;padding:1.5rem;background:#fff;}
+        .post-item{
+            background:#fff;padding:12px;margin-bottom:12px;
+            border:1px solid #e5e5e5;border-radius:6px;
+            box-shadow:0 1px 2px rgba(0,0,0,0.04);transition:all .15s ease;
+        }
+        .post-item:hover{border-color:#ccc;box-shadow:0 2px 4px rgba(0,0,0,0.06);}
+        .post-item h2{font-size:16px;margin-bottom:6px;}
+        .post-item h2 a{text-decoration:none;color:#111;}
+        .post-item h2 a:hover{text-decoration:underline;}
+        .excerpt{font-size:13px;color:#555;margin-bottom:8px;}
+        .meta{font-size:11px;}
+        .meta a{
+            display:inline-block;padding:2px 6px;margin:2px 6px 2px 0;
+            border-radius:4px;text-decoration:none;font-weight:500;
+        }
+        .meta .cat{background:#e8f1ff;color:#1a4fb3;border:1px solid #c7dcff;}
+        .meta .label{background:#e9f7ef;color:#1b7f4c;border:1px solid #c9ead6;}
+        .meta .tag{background:#f3f3f3;color:#555;border:1px solid #ddd;}
+        .meta a:hover{opacity:.85;}
+        .section-label{text-align:center;font-weight:600;margin-bottom:1.5rem;}
+
+        @media(min-width:1025px){
+            .blog-header-main.floating-header-main{padding:12px 24px;}
+            .header-content-main{max-width:1400px;}
+            .blog-title-main{font-size:22px;}
+            .menu-btn-main{width:40px;height:40px;}
+            .menu-icon-main{width:26px;height:26px;}
+            #blogMenuPanel{top:65px;right:24px;padding:20px;min-width:220px;max-width:250px;}
+            #blogMenuPanel a{padding:12px 16px;font-size:15px;margin-bottom:4px;}
+            #blogMenuPanel li:not(:last-child) a{border-bottom:1px solid #f0f0f0;}
+            .header-spacer{height:70px;}
+        }
+        @media(max-width:1024px) and (min-width:769px){
+            .blog-header-main.floating-header-main{padding:10px 16px;}
+            .header-content-main{gap:14px;}
+            .blog-title-main{font-size:18px;}
+            .menu-btn-main{width:36px;height:36px;}
+            .menu-icon-main{width:22px;height:22px;stroke-width:2.5;}
+            #blogMenuPanel{top:58px;right:16px;padding:16px;min-width:200px;max-width:220px;}
+            #blogMenuPanel a{padding:10px 14px;font-size:14px;margin-bottom:3px;}
+            .header-spacer{height:58px;}
+        }
+        @media(max-width:768px){
+            .blog-header-main.floating-header-main{padding:8px 12px;}
+            .blog-title-main{font-size:17px;}
+            .menu-btn-main{width:32px;height:32px;}
+            .menu-icon-main{width:20px;height:20px;stroke-width:2.5;}
+            #blogMenuPanel{top:56px;right:12px;padding:14px;min-width:180px;max-width:200px;}
+            #blogMenuPanel a{padding:9px 12px;font-size:13px;margin-bottom:2px;}
+            .header-spacer{height:52px;}
+        }
+        @media(max-width:480px){
+            .blog-header-main.floating-header-main{padding:8px 10px;}
+            .header-content-main{gap:12px;}
+            .blog-title-main{font-size:16px;font-weight:600;}
+            .menu-btn-main{width:30px;height:30px;}
+            .menu-icon-main{width:18px;height:18px;stroke-width:2.5;}
+            #blogMenuPanel{top:54px;right:10px;padding:12px;min-width:160px;max-width:180px;}
+            #blogMenuPanel a{padding:8px 10px;font-size:12px;margin-bottom:2px;}
+            .header-spacer{height:48px;}
+        }
+        </style>
+
+        <div class="header-spacer"></div>
+
+        <div class="homepage-content">
+            <main>
+                <article>
+                    <div class="section-label"><b>Latest Posts</b></div>
+                    <div id="postList">
+                        {% for post in site.categories.main %}
+                        <div class="post-item">
+                            <h2>
+                                <a href="{{ post.url }}">
+                                    {{ post.title }}
+                                </a>
+                            </h2>
+                            <div class="excerpt">
+                                {{ post.description }}
+                            </div>
+                            {% assign before_svg = post.content | split: "<p>" | first %}
+                            <div class="excerpt spo">
+                                {{ before_svg }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </article>
+            </main>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- KONDISI 2: HALAMAN QUERY                     -->
+    <!-- ============================================ -->
+    <div id="query-page" style="display:none;">
+        <style>
+            :root{
+                --bg-body:#1a1a1b;--bg-card:#1e1e1f;
+                --border-color:#343536;--border-hover:#565758;
+                --text-primary:#d7dadc;--text-secondary:#818384;--text-muted:#5a5b5c;
+                --accent:#d93900;--accent-hover:#ff4500;
+                --flair-bg-1:#1a3e4c;--flair-text-1:#9efff0;
+                --flair-bg-2:#4c1a2e;--flair-text-2:#ff9ec4;
+                --flair-bg-3:#1a4c2e;--flair-text-3:#9effb0;
+                --flair-bg-4:#4c3a1a;--flair-text-4:#ffd700;
+                --flair-bg-5:#1a3a4c;--flair-text-5:#87ceeb;
+                --card-radius:8px;--card-padding:0.75rem;--card-gap:0.75rem;
+                --font-heading:1.5rem;--font-card-title:1rem;
+                --font-meta:0.7rem;--font-small:0.6rem;
+            }
+            .query-container{
+                max-width:1000px;margin:0 auto;padding:1rem;
+                background:var(--bg-body);color:var(--text-primary);
+                font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans",sans-serif;
+                line-height:1.5;min-height:100vh;
+            }
+            .query-container *{margin:0;padding:0;box-sizing:border-box;}
+
+            .query-identity{display:flex;align-items:center;gap:12px;margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border-color);}
+            .query-avatar{flex-shrink:0;width:48px;height:48px;border-radius:50%;overflow:hidden;}
+            .query-avatar svg{width:48px;height:48px;}
+            .page-h1{font-size:var(--font-heading);font-weight:600;color:var(--text-primary);border-bottom:none!important;padding-bottom:0!important;margin-bottom:0!important;flex:1;}
+
+            .breadcrumb{font-size:var(--font-meta);color:var(--text-secondary);margin-bottom:0.5rem;}
+            .breadcrumb a{color:var(--text-secondary);text-decoration:none;}
+            .breadcrumb a:hover{text-decoration:underline;}
+            .breadcrumb span:last-child{color:var(--text-primary);}
+
+            .header-card{
+                background:var(--bg-card);border-radius:var(--card-radius);
+                padding:var(--card-padding);margin-bottom:1rem;
+                display:flex;justify-content:space-between;align-items:center;
+                flex-wrap:wrap;gap:1rem;border:1px solid var(--border-color);
+            }
+            .header-info h2{font-size:1.2rem;font-weight:600;}
+            .header-info p{font-size:var(--font-meta);color:var(--text-secondary);}
+            .header-action{
+                background:var(--accent);padding:0.4rem 1rem;border-radius:20px;
+                font-size:var(--font-meta);font-weight:600;color:#fff;
+                cursor:pointer;transition:background 0.2s;text-decoration:none;display:inline-block;
+            }
+            .header-action:hover{background:var(--accent-hover);}
+
+            .sort-bar{display:flex;gap:1rem;border-bottom:1px solid var(--border-color);padding-bottom:0.5rem;margin-bottom:1rem;font-size:0.75rem;}
+            .sort-active{color:var(--accent);font-weight:600;}
+            .sort-inactive{cursor:pointer;color:var(--text-secondary);}
+            .sort-inactive:hover{color:var(--text-primary);}
+
+            .video-section{
+                margin-bottom:1rem;background:var(--bg-card);
+                border:1px solid var(--border-color);border-radius:var(--card-radius);
+                padding:var(--card-padding);
+            }
+            .video-title{font-size:0.8rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;}
+            .video-embed{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:6px;}
+            .video-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none;}
+
+            .two-col{display:grid;grid-template-columns:1fr 280px;gap:1rem;}
+
+            .post-feed{display:flex;flex-direction:column;gap:var(--card-gap);}
+            .post-feed.grid{display:grid;grid-template-columns:repeat(2,1fr);}
+            .post-feed.gallery{display:grid;grid-template-columns:repeat(3,1fr);}
+            .post-card{
+                background:var(--bg-card);border:1px solid var(--border-color);
+                border-radius:var(--card-radius);padding:var(--card-padding);transition:all 0.1s;
+            }
+            .post-card:hover{border-color:var(--border-hover);}
+            .post-card-header{display:flex;align-items:center;gap:0.5rem;font-size:var(--font-meta);color:var(--text-secondary);margin-bottom:0.5rem;flex-wrap:wrap;}
+            .post-card-community{color:var(--accent);font-weight:600;}
+            .post-card-author{font-weight:500;}
+            .post-card-time{font-size:var(--font-small);}
+            .post-card-title{font-size:var(--font-card-title);font-weight:500;margin-bottom:0.5rem;color:var(--text-primary);}
+            .post-card-title a{color:var(--text-primary);text-decoration:none;display:block;}
+            .post-card-title a:hover{text-decoration:underline;color:var(--accent-hover);}
+            .post-card-meta{display:flex;gap:0.5rem;font-size:var(--font-small);color:var(--text-secondary);margin-bottom:0.5rem;flex-wrap:wrap;}
+            .flair{display:inline-block;padding:0.15rem 0.5rem;border-radius:12px;font-size:var(--font-small);font-weight:600;text-transform:uppercase;}
+            .flair-1{background:var(--flair-bg-1);color:var(--flair-text-1);}
+            .flair-2{background:var(--flair-bg-2);color:var(--flair-text-2);}
+            .flair-3{background:var(--flair-bg-3);color:var(--flair-text-3);}
+            .flair-4{background:var(--flair-bg-4);color:var(--flair-text-4);}
+            .flair-5{background:var(--flair-bg-5);color:var(--flair-text-5);}
+            .vote-section{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;font-weight:600;color:var(--text-secondary);}
+            .vote-btn{font-size:1rem;cursor:pointer;transition:color 0.2s;background:none;border:none;color:var(--text-secondary);padding:0;}
+            .vote-btn:hover{color:var(--accent);}
+            .action-row{display:flex;gap:0.75rem;margin-top:0.5rem;font-size:var(--font-small);}
+            .action-link{color:var(--text-secondary);text-decoration:none;}
+            .action-link:hover{color:var(--text-primary);text-decoration:underline;}
+            .post-badges{display:flex;gap:0.4rem;margin-top:0.25rem;flex-wrap:wrap;}
+            .post-badge{font-size:0.55rem;padding:0.15rem 0.4rem;border-radius:3px;font-weight:500;}
+            .post-badge-trending{background:#2a3a2a;color:#9effb0;}
+            .post-badge-hot{background:#3a2a2a;color:#ffb09e;}
+            .post-badge-latest{background:#2a2a3a;color:#9eb0ff;}
+            .post-badge-popular{background:#3a3a2a;color:#ffd79e;}
+
+            .sidebar-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--card-radius);padding:var(--card-padding);margin-bottom:1rem;position:sticky;top:1rem;}
+            .sidebar-title{font-size:0.75rem;font-weight:600;margin-bottom:0.5rem;border-bottom:1px solid var(--border-color);padding-bottom:0.25rem;color:var(--text-primary);}
+            .sidebar-item{padding:0.4rem 0;border-bottom:1px solid #2a2a2b;font-size:var(--font-meta);}
+            .sidebar-item a{color:var(--text-primary);text-decoration:none;display:block;transition:color 0.2s;}
+            .sidebar-item a:hover{color:var(--accent-hover);text-decoration:underline;}
+            .sidebar-number{color:var(--accent);font-weight:700;margin-right:0.25rem;}
+
+            .toc-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--card-radius);padding:var(--card-padding);margin-bottom:1rem;}
+            .toc-title{font-size:0.75rem;font-weight:600;margin-bottom:0.5rem;border-bottom:1px solid var(--border-color);padding-bottom:0.25rem;color:var(--text-primary);}
+            .toc-list{list-style:none;padding:0;margin:0;}
+            .toc-list li{padding:0.3rem 0;border-bottom:1px solid #2a2a2b;font-size:var(--font-meta);}
+            .toc-list li:last-child{border-bottom:none;}
+            .toc-list a{color:var(--text-secondary);text-decoration:none;display:block;transition:color 0.2s;}
+            .toc-list a:hover{color:var(--accent);}
+            .toc-number{color:var(--accent);font-weight:700;margin-right:0.25rem;}
+
+            .related-searches{margin-top:1.5rem;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--card-radius);padding:var(--card-padding);}
+            .related-title{font-size:0.8rem;font-weight:600;color:var(--text-primary);margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border-color);}
+            .related-links{display:flex;flex-wrap:wrap;gap:0.5rem;}
+            .related-links a{display:inline-block;padding:0.3rem 0.75rem;background:#2a2a2b;color:var(--text-primary);text-decoration:none;border-radius:16px;font-size:0.65rem;transition:all 0.2s;border:1px solid transparent;}
+            .related-links a:hover{border-color:var(--accent);color:var(--accent);background:#1a1a1b;}
+
+            .also-viewed{margin-top:1rem;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--card-radius);padding:var(--card-padding);}
+            .also-viewed-title{font-size:0.8rem;font-weight:600;color:var(--text-primary);margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border-color);}
+            .also-viewed-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.5rem;}
+            .also-viewed-item{background:#2a2a2b;border:1px solid transparent;border-radius:6px;padding:0.5rem;transition:all 0.2s;cursor:pointer;}
+            .also-viewed-item:hover{border-color:var(--accent);background:#1a1a1b;}
+            .also-viewed-item a{color:var(--text-primary);text-decoration:none;font-size:0.65rem;display:block;}
+            .also-viewed-item a:hover{color:var(--accent);}
+            .also-viewed-badge{display:inline-block;font-size:0.55rem;color:var(--accent);margin-top:0.25rem;font-weight:600;}
+
+            .download-section{margin-top:1rem;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--card-radius);padding:var(--card-padding);}
+            .download-title{font-size:0.8rem;font-weight:600;color:var(--text-primary);margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border-color);}
+            .download-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.5rem;}
+            .download-item{background:#2a2a2b;border:1px solid transparent;border-radius:6px;padding:0.6rem 0.75rem;transition:all 0.2s;display:flex;align-items:center;gap:0.5rem;}
+            .download-item:hover{border-color:var(--accent);background:#1a1a1b;}
+            .download-item a{color:var(--text-primary);text-decoration:none;font-size:0.7rem;font-weight:500;flex:1;}
+            .download-item a:hover{color:var(--accent);}
+            .download-icon{width:18px;height:18px;flex-shrink:0;}
+            .download-badge{font-size:0.5rem;padding:0.15rem 0.4rem;border-radius:3px;font-weight:600;text-transform:uppercase;}
+            .download-badge-fast{background:#1a4c2e;color:#9effb0;}
+            .download-badge-full{background:#1a3e4c;color:#9efff0;}
+            .download-badge-hd{background:#4c1a2e;color:#ff9ec4;}
+            .download-badge-vip{background:#4c3a1a;color:#ffd700;}
+
+            .watch-section{margin-top:1rem;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--card-radius);padding:var(--card-padding);}
+            .watch-title{font-size:0.8rem;font-weight:600;color:var(--text-primary);margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid var(--border-color);}
+            .watch-links{display:flex;flex-wrap:wrap;gap:0.5rem;}
+            .watch-links a{display:inline-block;padding:0.35rem 0.85rem;background:#2a2a2b;color:var(--text-primary);text-decoration:none;border-radius:16px;font-size:0.65rem;transition:all 0.2s;border:1px solid transparent;}
+            .watch-links a:hover{border-color:var(--accent);color:var(--accent);background:#1a1a1b;}
+            .watch-icon{display:inline-block;width:12px;height:12px;margin-right:3px;vertical-align:middle;}
+
+            .mirror-section{margin-top:1rem;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--card-radius);padding:var(--card-padding);}
+            .mirror-title{font-size:0.7rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;padding-bottom:0.25rem;border-bottom:1px solid var(--border-color);}
+            .mirror-links{display:flex;flex-direction:column;gap:0.3rem;}
+            .mirror-item{display:flex;align-items:center;gap:0.4rem;padding:0.3rem 0;border-bottom:1px solid #2a2a2b;font-size:0.65rem;}
+            .mirror-item:last-child{border-bottom:none;}
+            .mirror-item a{color:var(--text-secondary);text-decoration:none;flex:1;}
+            .mirror-item a:hover{color:var(--accent);text-decoration:underline;}
+            .mirror-icon{width:14px;height:14px;flex-shrink:0;}
+            .mirror-status{font-size:0.5rem;padding:0.1rem 0.35rem;border-radius:3px;font-weight:600;text-transform:uppercase;}
+            .mirror-status-online{background:#1a4c2e;color:#9effb0;}
+            .mirror-status-active{background:#1a3e4c;color:#9efff0;}
+
+            .trending-tags{margin-top:1rem;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--card-radius);padding:var(--card-padding);}
+            .trending-tags-title{font-size:0.7rem;font-weight:600;color:var(--text-primary);margin-bottom:0.5rem;}
+            .trending-tags-cloud{display:flex;flex-wrap:wrap;gap:0.4rem;}
+            .trending-tags-cloud a{display:inline-block;padding:0.2rem 0.6rem;border-radius:4px;font-size:0.6rem;font-weight:600;text-transform:uppercase;text-decoration:none;transition:all 0.2s;}
+            .tag-size-xl{font-size:0.75rem;padding:0.3rem 0.7rem;}
+            .tag-size-lg{font-size:0.7rem;padding:0.25rem 0.65rem;}
+            .tag-size-md{font-size:0.65rem;}
+            .tag-size-sm{font-size:0.55rem;}
+
+            .query-footer{font-size:var(--font-small);color:var(--text-muted);text-align:center;margin-top:2rem;}
+            .footer-links{display:flex;gap:1rem;justify-content:center;margin-bottom:0.5rem;flex-wrap:wrap;}
+            .footer-links a{color:var(--text-secondary);text-decoration:none;font-size:var(--font-small);}
+            .footer-links a:hover{text-decoration:underline;}
+            hr{border:none;border-top:1px solid var(--border-color);margin:1rem 0;}
+
+            @media(max-width:768px){
+                .two-col{grid-template-columns:1fr;}
+                .query-container{padding:0.5rem;}
+                .sidebar-card{position:static;}
+                .post-feed.grid{grid-template-columns:1fr;}
+                .post-feed.gallery{grid-template-columns:repeat(2,1fr);}
+                .download-grid{grid-template-columns:1fr;}
+                .also-viewed-grid{grid-template-columns:repeat(2,1fr);}
+            }
+            @media(max-width:480px){
+                .post-feed.gallery{grid-template-columns:1fr;}
+                .also-viewed-grid{grid-template-columns:1fr;}
+                .related-links a{font-size:0.6rem;padding:0.25rem 0.5rem;}
+            }
+        </style>
+
+        <div class="query-container">
+            <div class="query-identity">
+                <div id="query-avatar" class="query-avatar"></div>
+                <h1 id="page-h1" class="page-h1"></h1>
+            </div>
+            <div class="breadcrumb">
+                <a href="/yulianti/">Home</a> / <span id="breadcrumb-domain"></span> / search: <span id="breadcrumb-query"></span>
+            </div>
+            <div class="header-card">
+                <div class="header-info">
+                    <h2 id="header-title"></h2>
+                    <p id="header-subtitle"></p>
+                </div>
+                <span class="header-action" id="header-action-label"></span>
+            </div>
+            <div class="sort-bar">
+                <span class="sort-active" id="sort-label"></span>
+                <span class="sort-inactive">Newest</span>
+                <span class="sort-inactive">Most upvoted</span>
+            </div>
+
+            <!-- VIDEO SECTION -->
+            <div class="video-section" id="video-section">
+                <div class="video-title" id="video-title"></div>
+                <div class="video-embed" id="video-embed"></div>
+            </div>
+
+            <div class="two-col">
+                <div>
+                    <div class="post-feed" id="post-feed"></div>
+                    <div class="related-searches" id="related-searches">
+                        <div class="related-title">Related Searches</div>
+                        <div class="related-links" id="related-links"></div>
+                    </div>
+                    <div class="also-viewed" id="also-viewed">
+                        <div class="also-viewed-title">People Also Viewed</div>
+                        <div class="also-viewed-grid" id="also-viewed-grid"></div>
+                    </div>
+                    <div class="download-section" id="download-section">
+                        <div class="download-title">Download Links</div>
+                        <div class="download-grid" id="download-grid"></div>
+                    </div>
+                    <div class="watch-section" id="watch-section">
+                        <div class="watch-title">Watch Online</div>
+                        <div class="watch-links" id="watch-links"></div>
+                    </div>
+                </div>
+                <div>
+                    <div class="toc-card" id="toc-card">
+                        <div class="toc-title">Table of Contents</div>
+                        <ol class="toc-list" id="toc-list"></ol>
+                    </div>
+                    <div class="sidebar-card">
+                        <div class="sidebar-title"><h3 id="sidebar-heading" style="font-size:0.75rem;font-weight:600;margin:0;"></h3></div>
+                        <div id="sidebar-links"></div>
+                    </div>
+                    <div id="trending-tags-container"></div>
+                    <div class="mirror-section" id="mirror-section">
+                        <div class="mirror-title">Alternative Links</div>
+                        <div class="mirror-links" id="mirror-links"></div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="query-footer">
+                <div class="footer-links" id="footer-links"></div>
+                <span id="footer-text"></span> - <span id="footer-status"></span>
+            </div>
+        </div>
+    </div>
+
+{% include footer.html %}
+
+</div>
+
+<!-- ============================================ -->
+<!-- JAVASCRIPT FINAL                             -->
+<!-- ============================================ -->
+<script>
+(function() {
+
+    var hostname = window.location.hostname;
+    var parts = hostname.split(".");
+    var tldParts = 2;
+    var rawName = parts.slice(0, Math.max(1, parts.length - tldParts)).join("-");
+    if (rawName.toLowerCase() === "www") {
+        rawName = parts.slice(1, Math.max(2, parts.length - tldParts)).join("-");
+    }
+    var fullName = rawName;
+
+    function hashString(str) {
+        var hash = 0;
+        for (var i = 0; i < str.length; i++) {
+            hash = ((hash << 5) - hash) + str.charCodeAt(i);
+            hash |= 0;
+        }
+        return Math.abs(hash);
+    }
+
+    var domainHash = hashString(fullName);
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var query = urlParams.get("q");
+    var homepage = document.getElementById("homepage");
+    var queryPage = document.getElementById("query-page");
+
+    if (!query) {
+        if (homepage) homepage.style.display = "block";
+        if (queryPage) queryPage.style.display = "none";
+        return;
+    }
+
+    if (homepage) homepage.style.display = "none";
+    if (queryPage) queryPage.style.display = "block";
+
+    query = decodeURIComponent(query.replace(/\+/g, " "));
+    var combinedSeed = hashString(fullName + "|||" + query);
+
+    function SeededRandom(seed) {
+        this.seed = seed;
+        this.next = function() {
+            this.seed = (this.seed * 1103515245 + 12345) & 0x7fffffff;
+            return this.seed / 0x7fffffff;
+        };
+    }
+
+    function pickFromArray(arr, seed, index) {
+        return arr[(seed + index) % arr.length];
+    }
+
+    function shuffleArray(arr, seed) {
+        var shuffled = arr.slice();
+        var rng = new SeededRandom(seed);
+        for (var i = shuffled.length - 1; i > 0; i--) {
+            var j = Math.floor(rng.next() * (i + 1));
+            var temp = shuffled[i];
+            shuffled[i] = shuffled[j];
+            shuffled[j] = temp;
+        }
+        return shuffled;
+    }
+
+    // Path pool
+    var allPaths = [];
+    for (var i = 1; i <= 50; i++) {
+        var num = (i < 10) ? "0" + i : "" + i;
+        allPaths.push("yulianti-" + num);
+    }
+    var allPathsShuffled = shuffleArray(allPaths, domainHash);
+
+    function getPath(seed, index) {
+        return pickFromArray(allPathsShuffled, seed, index);
+    }
+
+    // Normalisasi query
+    function normalizeQuery(rawQuery) {
+        var decoded = decodeURIComponent(rawQuery.replace(/\+/g, " "));
+        var words = decoded.toLowerCase().split(/\s+/);
+        var seen = {};
+        var uniqueWords = [];
+        for (var i = 0; i < words.length; i++) {
+            var w = words[i];
+            if (w.length > 0 && !seen[w]) { seen[w] = true; uniqueWords.push(w); }
+        }
+        if (uniqueWords.length > 8) uniqueWords = uniqueWords.slice(0, 8);
+        return uniqueWords.join(" ");
+    }
+
+    // Warna
+    var hue = domainHash % 360;
+    function hslToHex(h, s, l) {
+        h = h % 360; s = s / 100; l = l / 100;
+        var c = (1 - Math.abs(2 * l - 1)) * s;
+        var x = c * (1 - Math.abs((h / 60) % 2 - 1));
+        var m = l - c / 2;
+        var r, g, b;
+        if (h < 60) { r = c; g = x; b = 0; }
+        else if (h < 120) { r = x; g = c; b = 0; }
+        else if (h < 180) { r = 0; g = c; b = x; }
+        else if (h < 240) { r = 0; g = x; b = c; }
+        else if (h < 300) { r = x; g = 0; b = c; }
+        else { r = c; g = 0; b = x; }
+        r = Math.round((r + m) * 255);
+        g = Math.round((g + m) * 255);
+        b = Math.round((b + m) * 255);
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+
+    var accentColor = hslToHex(hue, 70, 50);
+    var accentHover = hslToHex(hue, 80, 60);
+
+    var queryContainer = document.querySelector(".query-container");
+    if (queryContainer) {
+        queryContainer.style.setProperty("--accent", accentColor);
+        queryContainer.style.setProperty("--accent-hover", accentHover);
+        queryContainer.style.setProperty("--flair-bg-1", hslToHex(hue, 30, 15));
+        queryContainer.style.setProperty("--flair-text-1", hslToHex(hue, 60, 75));
+        queryContainer.style.setProperty("--flair-bg-2", hslToHex((hue+60)%360, 30, 15));
+        queryContainer.style.setProperty("--flair-text-2", hslToHex((hue+60)%360, 60, 75));
+        queryContainer.style.setProperty("--flair-bg-3", hslToHex((hue+120)%360, 30, 15));
+        queryContainer.style.setProperty("--flair-text-3", hslToHex((hue+120)%360, 60, 75));
+        queryContainer.style.setProperty("--flair-bg-4", hslToHex((hue+180)%360, 30, 15));
+        queryContainer.style.setProperty("--flair-text-4", hslToHex((hue+180)%360, 60, 75));
+        queryContainer.style.setProperty("--flair-bg-5", hslToHex((hue+240)%360, 30, 15));
+        queryContainer.style.setProperty("--flair-text-5", hslToHex((hue+240)%360, 60, 75));
+    }
+
+    var layoutIndex = domainHash % 3;
+    var layoutClasses = ["feed-list", "grid", "gallery"];
+    var layoutClass = layoutClasses[layoutIndex];
+
+    // SVG Icons
+    function svgDownloadIcon() {
+        return "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"" + accentColor + "\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z\"/><line x1=\"12\" y1=\"11\" x2=\"12\" y2=\"17\"/><polyline points=\"9 14 12 17 15 14\"/></svg>";
+    }
+
+    function svgWatchIcon() {
+        return "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 16 16\" fill=\"none\" stroke=\"" + accentColor + "\" stroke-width=\"1.2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M1 8s3-5 7-5 7 5 7 5-3 5-7 5-7-5-7-5z\"/><circle cx=\"8\" cy=\"8\" r=\"2.5\"/></svg>";
+    }
+
+    function svgMirrorIcon() {
+        return "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"" + accentColor + "\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"9\" y=\"9\" width=\"13\" height=\"13\" rx=\"2\" ry=\"2\"/><path d=\"M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1\"/></svg>";
+    }
+
+    // Flair pool
+    function generateFlairPool(name, count) {
+        var chars = name.toUpperCase().replace(/[^A-Z]/g, "");
+        if (chars.length < 3) chars = name.toUpperCase() + "XYZ";
+        var pool = [];
+        var rng = new SeededRandom(hashString(name + "_flair"));
+        for (var i = 0; i < count; i++) {
+            var flair = "";
+            var len = 3 + Math.floor(rng.next() * 6);
+            for (var j = 0; j < len; j++) { flair += chars.charAt(Math.floor(rng.next() * chars.length)); }
+            pool.push(flair);
+        }
+        return pool;
+    }
+
+    var flairPool = generateFlairPool(fullName, 20);
+
+    // Pool template
+    var titleTemplates = shuffleArray([
+        "[QUERY] Archive on [DOMAIN]",
+        "[QUERY] - Full Collection | [DOMAIN]",
+        "[DOMAIN] presents: [QUERY]",
+        "[QUERY] - Latest Updates on [DOMAIN]",
+        "Access [QUERY] on [DOMAIN]",
+        "[DOMAIN] - [QUERY] Complete Archive",
+        "[QUERY] Collection - [DOMAIN]",
+        "Browse [QUERY] on [DOMAIN]"
+    ], domainHash);
+
+    var h2Templates = shuffleArray([
+        "[DOMAIN] - [QUERY] Archive",
+        "Search Results: [QUERY] - [DOMAIN]",
+        "[QUERY] - [DOMAIN] Collection",
+        "[DOMAIN] - Latest [QUERY] Content",
+        "[QUERY] Updates - [DOMAIN]"
+    ], domainHash);
+
+    var sidebarTitles = shuffleArray([
+        "More on [DOMAIN]", "Related Content", "You May Also Like",
+        "Trending on [DOMAIN]", "Popular Picks", "[DOMAIN] Recommends"
+    ], domainHash);
+
+    var footerTexts = shuffleArray([
+        "[DOMAIN] - Independent archive", "[DOMAIN] - Community driven",
+        "[DOMAIN] - Live updates", "[DOMAIN] - Updated regularly",
+        "[DOMAIN] - Verified source"
+    ], domainHash);
+
+    var footerStatuses = shuffleArray(["live","active","online","updated","available"], domainHash);
+    var sortLabels = shuffleArray(["Relevance","Trending","Hot","Top Rated","Most Viewed"], domainHash);
+    var headerActionLabels = shuffleArray(["JOIN","FOLLOW","SUBSCRIBE","ACCESS","ENTER","BROWSE"], domainHash);
+
+    var timePhrases = shuffleArray([
+        "just now","a few minutes ago","recently","earlier today","today",
+        "not long ago","fresh","new","latest","just added","updated","active now"
+    ], domainHash);
+
+    var authorPrefixes = shuffleArray([
+        "user","member","contributor","curator","collector","source","uploader"
+    ], domainHash);
+
+    var actionVerbSets = shuffleArray([
+        ["comments","Share","Save"],["replies","Share","Bookmark"],
+        ["discussions","Copy link","Save"],["responses","Share","Pin"]
+    ], domainHash);
+
+    // Ekstrak display name
+    var removeTerms = [
+        "leaked","leak","leaks","archive","collection","dump",
+        "vault","pack","bundle","gallery","content","media",
+        "videos","photos","pics","onlyfans","tiktok","instagram",
+        "twitter","telegram","discord","trending","viral",
+        "exclusive","private","premium","full","complete",
+        "hot","new","watch","view","access","reddit","forum","thread"
+    ];
+    var baseRaw = query.toLowerCase();
+    removeTerms.forEach(function(term) {
+        var regex = new RegExp("\\b" + term + "\\b", "gi");
+        baseRaw = baseRaw.replace(regex, "");
+    });
+    baseRaw = baseRaw.replace(/\s+/g, " ").trim();
+    var baseName = baseRaw || query;
+    if (baseName.length < 2) baseName = query;
+
+    function formatName(str) {
+        return str.split(" ").map(function(w) {
+            return w.charAt(0).toUpperCase() + w.slice(1).toLowerCase();
+        }).join(" ");
+    }
+    var displayName = formatName(baseName);
+    var displayLower = displayName.toLowerCase();
+
+    // Avatar di halaman query
+    var words = fullName.split("-");
+    var initials = "";
+    for (var w = 0; w < Math.min(words.length, 3); w++) {
+        if (words[w].length > 0) initials += words[w].charAt(0).toUpperCase();
+    }
+    if (initials.length < 2) initials = fullName.substring(0, 3).toUpperCase();
+
+    var queryAvatarEl = document.getElementById("query-avatar");
+    if (queryAvatarEl) {
+        var qAvatarSize = 48;
+        var qAvatarHTML = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"" + qAvatarSize + "\" height=\"" + qAvatarSize + "\" viewBox=\"0 0 " + qAvatarSize + " " + qAvatarSize + "\">";
+        qAvatarHTML += "<rect width=\"" + qAvatarSize + "\" height=\"" + qAvatarSize + "\" rx=\"" + (qAvatarSize/2) + "\" fill=\"" + accentColor + "\"/>";
+        qAvatarHTML += "<text x=\"" + (qAvatarSize/2) + "\" y=\"" + (qAvatarSize/2 + 7) + "\" text-anchor=\"middle\" fill=\"#ffffff\" font-size=\"" + (qAvatarSize/2.3) + "\" font-weight=\"bold\" font-family=\"-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif\">" + initials + "</text>";
+        qAvatarHTML += "</svg>";
+        queryAvatarEl.innerHTML = qAvatarHTML;
+    }
+
+    // Meta Keywords
+    var metaKeywords = document.getElementById("dynamic-keywords");
+    if (metaKeywords) {
+        var leakKW = shuffleArray([
+            displayLower + " leak", displayLower + " leaked", "leaked " + displayLower,
+            displayLower + " leaks", "leak " + displayLower, displayLower + " exclusive",
+            "exclusive " + displayLower, displayLower + " full", "full " + displayLower + " leak",
+            displayLower + " leaked content", displayLower + " leaked videos",
+            displayLower + " leaked photos", displayLower + " archive",
+            displayLower + " private leak", "rare " + displayLower + " leak"
+        ], combinedSeed);
+        metaKeywords.content = leakKW.slice(0, 8).join(", ");
+    }
+
+    // News Keywords
+    var metaNews = document.getElementById("dynamic-news-keywords");
+    if (metaNews) {
+        var newsKW = shuffleArray([
+            displayLower, "leaked", "exclusive", "private", "viral",
+            "trending", "archive", "collection", "media", "content"
+        ], combinedSeed);
+        metaNews.content = newsKW.slice(0, 5).join(", ");
+    }
+
+    // Breadcrumb Schema
+    var breadcrumbLabels = shuffleArray([
+        displayName + " Photos", displayName + " Videos", displayName + " Leaked",
+        displayName + " Archive", displayName + " Collection", displayName + " Exclusive",
+        displayName + " Full Set", displayName + " Media", displayName + " Content",
+        displayName + " Files", "Leaked " + displayName, "Exclusive " + displayName,
+        displayName + " Private", displayName + " Premium", displayName + " Rare"
+    ], combinedSeed);
+
+    var breadcrumbVariants = shuffleArray([
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: breadcrumbLabels[0], item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: breadcrumbLabels[1], item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: breadcrumbLabels[2], item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Photos", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+photos") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Videos", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+videos") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Leaked Content", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+leaked+content") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Exclusive", item: location.origin + "/yulianti/?q=" + encodeURIComponent("exclusive+" + displayLower) }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Archive", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+archive") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Full Collection", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+full+collection") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Private Media", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+private+media") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Leaked", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+leaked") }, { name: "Videos", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+leaked+videos") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Exclusive", item: location.origin + "/yulianti/?q=" + encodeURIComponent("exclusive+" + displayLower) }, { name: "Photos", item: location.origin + "/yulianti/?q=" + encodeURIComponent("exclusive+" + displayLower + "+photos") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Premium", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+premium") }, { name: "Full Archive", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+premium+archive") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Private", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+private") }, { name: "Media", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+private+media") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Collection", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+collection") }, { name: "Full Set", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+full+set") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Archive", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+archive") }, { name: "All Files", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+archive+files") }, { name: displayName, item: location.href }] }
+    ], combinedSeed);
+
+    var selectedBreadcrumb = breadcrumbVariants[0];
+    var breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": selectedBreadcrumb.levels.map(function(level, idx) {
+            return { "@type": "ListItem", "position": idx + 1, "name": level.name, "item": level.item };
+        })
+    };
+    var breadcrumbScript = document.createElement("script");
+    breadcrumbScript.type = "application/ld+json";
+    breadcrumbScript.textContent = JSON.stringify(breadcrumbSchema);
+    document.head.appendChild(breadcrumbScript);
+
+    // FAQ Schema
+    var faqQuestions = shuffleArray([
+        { q: "Where to find " + displayLower + " leaked content?", a: "Browse the complete " + displayLower + " archive on " + fullName + ". All leaked videos, photos, and exclusive media available in one place." },
+        { q: "Is " + displayLower + " leaked content available online?", a: "Yes, " + displayLower + " leaked content is available on " + fullName + ". Access the full collection with regular updates and new content added frequently." },
+        { q: "What type of " + displayLower + " leaks can I find?", a: "Find " + displayLower + " leaked videos, photos, private content, exclusive archives, premium media, and full collections on " + fullName + "." },
+        { q: "How to access " + displayLower + " private leaked media?", a: "Access " + displayLower + " private leaked media through " + fullName + ". Complete archive with all exclusive content, videos, and photos available." },
+        { q: "Are there recent " + displayLower + " leaks available?", a: "Yes, " + fullName + " has the latest " + displayLower + " leaks updated regularly with new content. Check back for fresh updates." },
+        { q: "Can I download " + displayLower + " leaked videos?", a: "Yes, " + fullName + " provides download links for " + displayLower + " leaked videos, photos, and full collections. Fast and direct access available." },
+        { q: "Where to watch " + displayLower + " leaked content online?", a: "Watch " + displayLower + " leaked videos and exclusive content online on " + fullName + ". Stream full footage, clips, and private media." },
+        { q: "Is there a mirror for " + displayLower + " leaks?", a: "Yes, " + fullName + " provides alternative and mirror links for " + displayLower + " leaks. Multiple sources ensure reliable access to all content." },
+        { q: "What is included in " + displayLower + " full collection?", a: "The " + displayLower + " full collection on " + fullName + " includes all leaked videos, exclusive photos, private media, premium content, and complete archive sets." },
+        { q: "How often are " + displayLower + " leaks updated?", a: displayLower + " leaks on " + fullName + " are updated regularly with the latest content, new videos, exclusive photos, and fresh media added frequently." }
+    ], combinedSeed);
+
+    var faqData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqQuestions.slice(0, 4).map(function(item) {
+            return { "@type": "Question", "name": item.q, "acceptedAnswer": { "@type": "Answer", "text": item.a } };
+        })
+    };
+    var faqScript = document.createElement("script");
+    faqScript.type = "application/ld+json";
+    faqScript.textContent = JSON.stringify(faqData);
+    document.head.appendChild(faqScript);
+
+    // Update elemen
+    var h1Text = pickFromArray(titleTemplates, combinedSeed, 0).replace("[QUERY]", displayName).replace("[DOMAIN]", fullName);
+    document.getElementById("page-h1").innerText = h1Text;
+    document.getElementById("breadcrumb-domain").innerText = fullName;
+    document.getElementById("breadcrumb-query").innerText = displayName;
+
+    var h2Text = pickFromArray(h2Templates, combinedSeed, 1).replace("[QUERY]", displayName).replace("[DOMAIN]", fullName);
+    document.getElementById("header-title").innerText = h2Text;
+    document.getElementById("header-subtitle").innerText = "Showing results for " + displayName + " - " + (10 + (combinedSeed % 8)) + " entries";
+    document.getElementById("header-action-label").innerText = pickFromArray(headerActionLabels, combinedSeed, 0);
+    document.getElementById("sort-label").innerText = pickFromArray(sortLabels, combinedSeed, 0);
+
+    var sidebarH3 = pickFromArray(sidebarTitles, combinedSeed, 2).replace("[QUERY]", displayName).replace("[DOMAIN]", fullName);
+    document.getElementById("sidebar-heading").innerText = sidebarH3;
+    document.getElementById("footer-text").innerText = pickFromArray(footerTexts, combinedSeed, 3).replace("[DOMAIN]", fullName);
+    document.getElementById("footer-status").innerText = pickFromArray(footerStatuses, combinedSeed, 50);
+
+    /*
+     * ============================================
+     * VIDEO YOUTUBE (19 video)
+     * ============================================
+     */
+    var youtubeVideos = [
+        { id: "O1l2S0bzcko", title: "Leaked Video" },
+        { id: "oiv_wy9p3ps", title: "Exclusive Content" },
+        { id: "fUNnD6VSdkA", title: "Private Media" },
+        { id: "E5KgrADNaHU", title: "Full Footage" },
+        { id: "YWEZWM7_SzE", title: "Behind Scenes" },
+        { id: "DfE-5eQ_EtM", title: "Rare Archive" },
+        { id: "2RhstWCXlto", title: "Premium Set" },
+        { id: "40c9YI_5-p0", title: "Hidden Content" },
+        { id: "0svS6hLJ4G4", title: "Secret Media" },
+        { id: "SeDq4De_DAE", title: "Viral Clips" },
+        { id: "Ty7AxYfbrdk", title: "Trending Video" },
+        { id: "W5_e0q7iV1U", title: "Latest Leak" },
+        { id: "G_OILgiU8oI", title: "Exclusive Footage" },
+        { id: "LeyWAsUF71A", title: "Private Collection" },
+        { id: "pflOqeoDK8Q", title: "Full Archive" },
+        { id: "ZxTvOSZSMR8", title: "Rare Content" },
+        { id: "T4GlXodmK6g", title: "Premium Access" },
+        { id: "_qro0KPFYxE", title: "Secret Archive" },
+        { id: "mxRm4CmH3wE", title: "Complete Set" }
+    ];
+
+    var selectedVideo = pickFromArray(youtubeVideos, combinedSeed, 0);
+    var videoId = selectedVideo.id;
+    var videoLabel = pickFromArray(shuffleArray([
+        "Watch " + displayLower + " Leaked Video",
+        displayLower + " Exclusive Footage",
+        "Stream " + displayLower + " Full Video",
+        displayLower + " Private Media Player",
+        "Play " + displayLower + " Content Now"
+    ], combinedSeed), combinedSeed, 0);
+
+    document.getElementById("video-title").innerText = videoLabel;
+    document.getElementById("video-embed").innerHTML = "<iframe src=\"https://www.youtube.com/embed/" + videoId + "\" allowfullscreen></iframe>";
+
+    // VideoObject Schema
+    var videoSchema = {
+        "@context": "https://schema.org",
+        "@type": "VideoObject",
+        "name": videoLabel,
+        "description": videoLabel + " on " + fullName + ". Watch exclusive content.",
+        "thumbnailUrl": "https://img.youtube.com/vi/" + videoId + "/hqdefault.jpg",
+        "embedUrl": "https://www.youtube.com/embed/" + videoId,
+        "contentUrl": "https://www.youtube.com/watch?v=" + videoId
+    };
+    var videoSchemaScript = document.createElement("script");
+    videoSchemaScript.type = "application/ld+json";
+    videoSchemaScript.textContent = JSON.stringify(videoSchema);
+    document.head.appendChild(videoSchemaScript);
+
+    // ImageObject Schema
+    var imageSchema = {
+        "@context": "https://schema.org",
+        "@type": "ImageObject",
+        "name": displayName + " Leaked Photos",
+        "description": displayName + " leaked photos and exclusive images on " + fullName,
+        "contentUrl": "https://img.youtube.com/vi/" + videoId + "/hqdefault.jpg",
+        "thumbnailUrl": "https://img.youtube.com/vi/" + videoId + "/mqdefault.jpg"
+    };
+    var imageSchemaScript = document.createElement("script");
+    imageSchemaScript.type = "application/ld+json";
+    imageSchemaScript.textContent = JSON.stringify(imageSchema);
+    document.head.appendChild(imageSchemaScript);
+
+    /*
+     * ============================================
+     * TOC (Table of Contents)
+     * ============================================
+     */
+    var tocItems = shuffleArray([
+        displayName + " Leaked Videos",
+        displayName + " Exclusive Photos",
+        displayName + " Private Media",
+        displayName + " Full Collection",
+        displayName + " Premium Archive",
+        displayName + " Hidden Content",
+        displayName + " Rare Footage",
+        displayName + " Complete Set",
+        "Download " + displayName + " Files",
+        "Watch " + displayName + " Online",
+        displayName + " Alternative Links",
+        displayName + " Trending Tags"
+    ], combinedSeed).slice(0, 8);
+
+    var tocHtml = "";
+    for (var toc = 0; toc < tocItems.length; toc++) {
+        tocHtml += "<li><a href=\"#section-" + toc + "\"><span class=\"toc-number\">" + (toc+1) + ".</span> " + tocItems[toc] + "</a></li>";
+    }
+    document.getElementById("toc-list").innerHTML = tocHtml;
+
+    // TOC ItemList Schema
+    var tocSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Table of Contents",
+        "itemListElement": tocItems.map(function(item, idx) {
+            return { "@type": "ListItem", "position": idx + 1, "name": item, "url": location.href + "#section-" + idx };
+        })
+    };
+    var tocSchemaScript = document.createElement("script");
+    tocSchemaScript.type = "application/ld+json";
+    tocSchemaScript.textContent = JSON.stringify(tocSchema);
+    document.head.appendChild(tocSchemaScript);
+
+    /*
+     * ============================================
+     * KEYWORD POOLS
+     * ============================================
+     */
+    var platforms = shuffleArray([
+        "OnlyFans","TikTok","Instagram","Telegram","Twitter","Discord",
+        "Snapchat","Premium","Patreon","Twitch","YouTube","Facebook","Reddit","Threads"
+    ], domainHash);
+
+    var adjectives = shuffleArray([
+        "private","exclusive","premium","deleted","hidden","rare","viral",
+        "secret","unreleased","censored","archived","restricted","special","limited"
+    ], domainHash);
+
+    var contentTypes = shuffleArray([
+        "videos","photos","media","content","collection","archive","pack",
+        "set","gallery","clips","stories","posts","footage","files","data"
+    ], domainHash);
+
+    var leakTerms = shuffleArray([
+        "leaked","leak","leaks","exclusive","private","premium","full","mega","rare"
+    ], domainHash);
+
+    function generateQueryKW(seed, count) {
+        var keywords = [];
+        for (var i = 0; i < count; i++) {
+            var parts = [];
+            parts.push(pickFromArray(platforms, seed, i));
+            parts.push(pickFromArray(adjectives, seed, i + 5));
+            parts.push(pickFromArray(contentTypes, seed, i + 10));
+            parts.push(pickFromArray(leakTerms, seed, i + 15));
+            keywords.push(parts.join(" ").toLowerCase());
+        }
+        return keywords;
+    }
+
+    function generatePostTitle(seed, index, name) {
+        var patterns = shuffleArray([
+            "[F1] " + name + " Collection - Full Set",
+            "[F2] " + name + " Archive - Complete",
+            name + " - [F1] Content Update",
+            "[F3] " + name + " - Latest Entry",
+            name + " [F4] Collection",
+            "[F1] " + name + " - [F2] Edition",
+            name + " Archive - [F3] Release",
+            "[F5] " + name + " - All Files"
+        ], seed);
+        return pickFromArray(patterns, seed, index);
+    }
+
+    /*
+     * ============================================
+     * GENERATE POSTS
+     * ============================================
+     */
+    var postCount = 10 + (combinedSeed % 8);
+    var postKws = generateQueryKW(combinedSeed, postCount);
+    var postsHtml = "";
+    var postItemsForSchema = [];
+
+    for (var p = 0; p < postCount; p++) {
+        var postSeed = combinedSeed + p * 777;
+        var upvotes = Math.floor(300 + (new SeededRandom(postSeed).next() * 4700));
+        var commentCount = Math.floor(upvotes / (5 + (postSeed % 5)));
+        var timeAgo = pickFromArray(timePhrases, postSeed, p);
+        var authorPrefix = pickFromArray(authorPrefixes, postSeed, p);
+        var authorNum = Math.floor(new SeededRandom(postSeed + 100).next() * 9000) + 1000;
+
+        var f1 = pickFromArray(flairPool, postSeed, 0);
+        var f2 = pickFromArray(flairPool, postSeed, 7);
+        var f3 = pickFromArray(flairPool, postSeed, 14);
+        var f4 = pickFromArray(flairPool, postSeed, 3);
+        var f5 = pickFromArray(flairPool, postSeed, 10);
+
+        var rawTitle = generatePostTitle(postSeed, p, displayName);
+        rawTitle = rawTitle.replace("[F1]", f1).replace("[F2]", f2).replace("[F3]", f3).replace("[F4]", f4).replace("[F5]", f5);
+
+        var linkQuery = normalizeQuery(displayLower + " " + postKws[p]);
+        var actionSet = pickFromArray(actionVerbSets, postSeed, p);
+        var flairClass1 = "flair-" + ((p % 5) + 1);
+        var flairClass2 = "flair-" + (((p + 2) % 5) + 1);
+        var postPath = getPath(combinedSeed, p);
+
+        var badgeOptions = shuffleArray([
+            { text: "Trending", class: "post-badge-trending" },
+            { text: "Hot", class: "post-badge-hot" },
+            { text: "Latest", class: "post-badge-latest" },
+            { text: "Popular", class: "post-badge-popular" },
+            { text: "Featured", class: "post-badge-hot" },
+            { text: "Top Rated", class: "post-badge-latest" }
+        ], combinedSeed);
+        var badge = pickFromArray(badgeOptions, combinedSeed, p);
+        var fileLabels = shuffleArray(["Full Set","Complete","All Files","Mega Pack","Full Archive","Complete Set","All Content","Entire Collection"], combinedSeed);
+        var fileLabel = pickFromArray(fileLabels, combinedSeed, p);
+
+        var postUrl = "/" + postPath + "/?q=" + encodeURIComponent(linkQuery);
+        postItemsForSchema.push({ "position": p + 1, "name": rawTitle, "url": location.origin + postUrl });
+
+        postsHtml += "<div class=\"post-card\" id=\"section-" + (p % 8) + "\">";
+        postsHtml += "<div class=\"post-card-header\">";
+        postsHtml += "<span class=\"post-card-community\">" + fullName + "</span>";
+        postsHtml += "<span class=\"post-card-author\">" + authorPrefix + "_" + authorNum + "</span>";
+        postsHtml += "<span class=\"post-card-time\">- " + timeAgo + "</span>";
+        postsHtml += "</div>";
+        postsHtml += "<div class=\"post-card-title\"><a href=\"" + postUrl + "\">" + rawTitle + "</a></div>";
+        postsHtml += "<div class=\"post-card-meta\">";
+        postsHtml += "<span class=\"flair " + flairClass1 + "\">" + f1 + "</span>";
+        postsHtml += "<span class=\"flair " + flairClass2 + "\">" + f2 + "</span>";
+        postsHtml += "</div>";
+        postsHtml += "<div class=\"post-badges\">";
+        postsHtml += "<span class=\"post-badge post-badge-latest\">" + fileLabel + "</span>";
+        postsHtml += "<span class=\"post-badge " + badge.class + "\">" + badge.text + "</span>";
+        postsHtml += "</div>";
+        postsHtml += "<div class=\"vote-section\"><button class=\"vote-btn\">Up</button> " + upvotes.toLocaleString() + " <button class=\"vote-btn\">Down</button></div>";
+        postsHtml += "<div class=\"action-row\">";
+        postsHtml += "<a href=\"" + postUrl + "\" class=\"action-link\">" + commentCount + " " + actionSet[0] + "</a>";
+        postsHtml += "<a href=\"" + postUrl + "\" class=\"action-link\">" + actionSet[1] + "</a>";
+        postsHtml += "<a href=\"" + postUrl + "\" class=\"action-link\">" + actionSet[2] + "</a>";
+        postsHtml += "</div>";
+        postsHtml += "</div>";
+    }
+
+    document.getElementById("post-feed").innerHTML = postsHtml;
+    document.getElementById("post-feed").classList.add(layoutClass);
+
+    // ItemList Post Feed Schema
+    var postListSchema = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": displayName + " Leaked Content",
+        "numberOfItems": postCount,
+        "itemListElement": postItemsForSchema
+    };
+    var postListSchemaScript = document.createElement("script");
+    postListSchemaScript.type = "application/ld+json";
+    postListSchemaScript.textContent = JSON.stringify(postListSchema);
+    document.head.appendChild(postListSchemaScript);
+
+    /*
+     * SIDEBAR
+     */
+    var sidebarCount = 10 + (combinedSeed % 8);
+    var sidebarKws = generateQueryKW(combinedSeed + 3333, sidebarCount);
+    var sidebarHtml = "";
+    for (var s = 0; s < sidebarCount; s++) {
+        var skw = sidebarKws[s];
+        var label = skw.split(" ").map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(" ");
+        var sQuery = normalizeQuery(displayLower + " " + skw);
+        var sPath = getPath(combinedSeed, 600 + s);
+        sidebarHtml += "<div class=\"sidebar-item\"><a href=\"/" + sPath + "/?q=" + encodeURIComponent(sQuery) + "\"><span class=\"sidebar-number\">" + (s+1) + ".</span> " + label + "</a></div>";
+    }
+    document.getElementById("sidebar-links").innerHTML = sidebarHtml;
+
+    /*
+     * TRENDING TAGS
+     */
+    var tagPool = flairPool.slice(0, 10);
+    var tagSizes = ["tag-size-xl","tag-size-lg","tag-size-lg","tag-size-md","tag-size-md","tag-size-md","tag-size-sm","tag-size-sm","tag-size-sm","tag-size-sm"];
+    var shuffledSizes = shuffleArray(tagSizes, combinedSeed);
+    var tagColors = shuffleArray(["flair-1","flair-2","flair-3","flair-4","flair-5"], combinedSeed);
+
+    var tagsHtml = "<div class=\"trending-tags\"><div class=\"trending-tags-title\">Trending Tags</div><div class=\"trending-tags-cloud\">";
+    for (var t = 0; t < 10; t++) {
+        var tQuery = normalizeQuery(displayLower + " " + tagPool[t].toLowerCase());
+        var tColor = tagColors[t % 5];
+        var tPath = getPath(combinedSeed, 800 + t);
+        tagsHtml += "<a href=\"/" + tPath + "/?q=" + encodeURIComponent(tQuery) + "\" class=\"flair " + tColor + " " + shuffledSizes[t] + "\">" + tagPool[t] + "</a>";
+    }
+    tagsHtml += "</div></div>";
+    document.getElementById("trending-tags-container").innerHTML = tagsHtml;
+
+    /*
+     * RELATED SEARCHES
+     */
+    var relatedVariations = shuffleArray([
+        displayLower + " exclusive content", displayLower + " private leaked",
+        "leaked " + displayLower + " videos", displayLower + " full collection",
+        displayLower + " rare footage", displayLower + " premium archive",
+        "exclusive " + displayLower + " photos", displayLower + " mega pack",
+        displayLower + " hidden media", displayLower + " deleted posts",
+        displayLower + " viral clips", "unreleased " + displayLower + " content",
+        displayLower + " behind paywall", displayLower + " complete set",
+        "new " + displayLower + " leak", displayLower + " trending archive"
+    ], combinedSeed);
+
+    var relatedHtml = "";
+    for (var r = 0; r < 8; r++) {
+        var rQuery = normalizeQuery(relatedVariations[r]);
+        var rLabel = relatedVariations[r].split(" ").map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(" ");
+        var rPath = getPath(combinedSeed, 400 + r);
+        relatedHtml += "<a href=\"/" + rPath + "/?q=" + encodeURIComponent(rQuery) + "\">" + rLabel + "</a>";
+    }
+    document.getElementById("related-links").innerHTML = relatedHtml;
+
+    /*
+     * PEOPLE ALSO VIEWED
+     */
+    var alsoViewedKws = generateQueryKW(combinedSeed + 11111, 6);
+    var alsoViewedBadges = shuffleArray(["Trending now","Popular","Most viewed","Just updated","New content","Hot picks","Top rated","Staff picks"], combinedSeed);
+    var alsoViewedHtml = "";
+    for (var a = 0; a < 6; a++) {
+        var aQuery = normalizeQuery(displayLower + " " + alsoViewedKws[a]);
+        var aLabel = alsoViewedKws[a].split(" ").map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(" ");
+        var aBadge = alsoViewedBadges[a];
+        var aPath = getPath(combinedSeed, 500 + a);
+        alsoViewedHtml += "<div class=\"also-viewed-item\">";
+        alsoViewedHtml += "<a href=\"/" + aPath + "/?q=" + encodeURIComponent(aQuery) + "\">" + aLabel + "</a>";
+        alsoViewedHtml += "<div class=\"also-viewed-badge\">" + aBadge + "</div>";
+        alsoViewedHtml += "</div>";
+    }
+    document.getElementById("also-viewed-grid").innerHTML = alsoViewedHtml;
+
+    /*
+     * DOWNLOAD LINKS
+     */
+    var downloadVerbs = shuffleArray(["Download","Get","Access","Grab","Save","Collect","Retrieve","Fetch"], combinedSeed);
+    var downloadLeakTerms = shuffleArray(["Leaked Video","Leaked Photos","Full Collection","Private Media","Exclusive Content","Leaked Archive","Premium Pack","Complete Set","All Files","Entire Archive","Leaked Footage","Hidden Content"], combinedSeed);
+    var downloadBadges = shuffleArray([
+        { text:"Fast", class:"download-badge-fast" },{ text:"Full", class:"download-badge-full" },
+        { text:"HD", class:"download-badge-hd" },{ text:"VIP", class:"download-badge-vip" },
+        { text:"Pro", class:"download-badge-fast" },{ text:"4K", class:"download-badge-hd" },
+        { text:"All", class:"download-badge-full" }
+    ], combinedSeed);
+
+    var downloadCount = 6 + (combinedSeed % 5);
+    var downloadHtml = "";
+    for (var d = 0; d < downloadCount; d++) {
+        var dVerb = pickFromArray(downloadVerbs, combinedSeed, d);
+        var dLeak = pickFromArray(downloadLeakTerms, combinedSeed, d + 2);
+        var dBadge = pickFromArray(downloadBadges, combinedSeed, d);
+        var dLabel = dVerb + " " + displayLower + " " + dLeak;
+        var dQuery = normalizeQuery(dLabel.toLowerCase());
+        var dPath = getPath(combinedSeed, 100 + d);
+        downloadHtml += "<div class=\"download-item\">";
+        downloadHtml += "<span class=\"download-icon\">" + svgDownloadIcon() + "</span>";
+        downloadHtml += "<a href=\"/" + dPath + "/?q=" + encodeURIComponent(dQuery) + "\">" + dLabel + "</a>";
+        downloadHtml += "<span class=\"download-badge " + dBadge.class + "\">" + dBadge.text + "</span>";
+        downloadHtml += "</div>";
+    }
+    document.getElementById("download-grid").innerHTML = downloadHtml;
+
+    /*
+     * WATCH ONLINE
+     */
+    var watchVerbs = shuffleArray(["Watch","Stream","View","Play","Browse","See","Check","Preview"], combinedSeed);
+    var watchTargets = shuffleArray(["Leaked Videos","Private Content","Full Footage","Exclusive Clips","Hidden Media","All Episodes","Behind Scenes","Deleted Posts","Rare Content","Secret Archive","Unreleased","Premium Access"], combinedSeed);
+    var watchQualifiers = shuffleArray(["Online","Free","Now","Full","Direct","HD","Instant","Uncut"], combinedSeed);
+    var watchCount = 8 + (combinedSeed % 4);
+    var watchHtml = "";
+
+    for (var w = 0; w < watchCount; w++) {
+        var wVerb = pickFromArray(watchVerbs, combinedSeed, w + 10);
+        var wTarget = pickFromArray(watchTargets, combinedSeed, w + 3);
+        var wQual = pickFromArray(watchQualifiers, combinedSeed, w + 7);
+        var wLabel = wVerb + " " + displayLower + " " + wTarget + " " + wQual;
+        var wQuery = normalizeQuery(wLabel.toLowerCase());
+        var wPath = getPath(combinedSeed, 200 + w);
+        watchHtml += "<a href=\"/" + wPath + "/?q=" + encodeURIComponent(wQuery) + "\"><span class=\"watch-icon\">" + svgWatchIcon() + "</span>" + wLabel + "</a>";
+    }
+    document.getElementById("watch-links").innerHTML = watchHtml;
+
+    /*
+     * MIRROR LINKS
+     */
+    var mirrorVerbs = shuffleArray(["Mirror","Alternative","Backup","Secondary","Other","Extra","Additional","Spare"], combinedSeed);
+    var mirrorSources = shuffleArray(["Link","Source","Server","Channel","Archive","Vault","Storage","Host"], combinedSeed);
+    var mirrorStatuses = shuffleArray([
+        { text:"Online", class:"mirror-status-online" },{ text:"Active", class:"mirror-status-active" },
+        { text:"Live", class:"mirror-status-online" },{ text:"Ready", class:"mirror-status-active" }
+    ], combinedSeed);
+    var mirrorCount = 5 + (combinedSeed % 4);
+    var mirrorHtml = "";
+
+    for (var m = 0; m < mirrorCount; m++) {
+        var mVerb = pickFromArray(mirrorVerbs, combinedSeed, m + 15);
+        var mSource = pickFromArray(mirrorSources, combinedSeed, m + 8);
+        var mStatus = pickFromArray(mirrorStatuses, combinedSeed, m);
+        var mLabel = mVerb + " " + mSource + ": " + displayLower + " Leaks";
+        var mQuery = normalizeQuery(mLabel.toLowerCase());
+        var mPath = getPath(combinedSeed, 300 + m);
+        mirrorHtml += "<div class=\"mirror-item\">";
+        mirrorHtml += "<span class=\"mirror-icon\">" + svgMirrorIcon() + "</span>";
+        mirrorHtml += "<a href=\"/" + mPath + "/?q=" + encodeURIComponent(mQuery) + "\">" + mLabel + "</a>";
+        mirrorHtml += "<span class=\"mirror-status " + mStatus.class + "\">" + mStatus.text + "</span>";
+        mirrorHtml += "</div>";
+    }
+    document.getElementById("mirror-links").innerHTML = mirrorHtml;
+
+    /*
+     * FOOTER LINKS
+     */
+    var footerLinkCount = 5 + (combinedSeed % 5);
+    var footerKws = generateQueryKW(combinedSeed + 7777, footerLinkCount);
+    var footerLinksHtml = "";
+    for (var f = 0; f < footerLinkCount; f++) {
+        var fkw = footerKws[f];
+        var flabel = fkw.split(" ").map(function(w) { return w.charAt(0).toUpperCase() + w.slice(1); }).join(" ");
+        var fQuery = normalizeQuery(displayLower + " " + fkw);
+        var fPath = getPath(combinedSeed, 700 + f);
+        footerLinksHtml += "<a href=\"/" + fPath + "/?q=" + encodeURIComponent(fQuery) + "\">" + flabel + "</a>";
+    }
+    document.getElementById("footer-links").innerHTML = footerLinksHtml;
+
+})();
+</script>
+
+
+
+
+
+  
+{% include /ads/gobloggugel/sosmed.html %}
+</div>
+</body>
+</html>
