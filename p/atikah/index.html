@@ -1,6 +1,6 @@
 ---
 layout: null
-permalink: /yulianti/
+permalink: /atikah/
 ---
 
 <!DOCTYPE html>
@@ -77,11 +77,11 @@ permalink: /yulianti/
             "@context": "https://schema.org",
             "@type": "WebSite",
             "name": displayDomain + " - File Manager",
-            "url": location.origin + "/yulianti/",
+            "url": location.origin + "/atikah/",
             "description": descText,
             "potentialAction": {
                 "@type": "SearchAction",
-                "target": location.origin + "/yulianti/?q={search_term_string}",
+                "target": location.origin + "/atikah/?q={search_term_string}",
                 "query-input": "required name=search_term_string"
             }
         };
@@ -125,7 +125,7 @@ permalink: /yulianti/
 
         <div id="blogMenuPanel">
             <ul>
-                <li><a href="/yulianti/">Home</a></li>
+                <li><a href="/atikah/">Home</a></li>
                 <li><a href="/contact/">Contact</a></li>
                 <li><a href="/privacy-policy/">Privacy Policy</a></li>
                 <li><a href="/terms-and-conditions/">Terms and Conditions</a></li>
@@ -652,7 +652,7 @@ permalink: /yulianti/
     var allPaths = [];
     for (var i = 1; i <= 50; i++) {
         var num = (i < 10) ? "0" + i : "" + i;
-        allPaths.push("yulianti-" + num);
+        allPaths.push("atikah-" + num);
     }
     var allPathsShuffled = shuffleArray(allPaths, domainHash);
 
@@ -769,10 +769,10 @@ permalink: /yulianti/
     ], combinedSeed);
 
     var breadcrumbVariants = shuffleArray([
-        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: breadcrumbLabels[0], item: location.href }] },
-        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Files", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+files") }, { name: displayName, item: location.href }] },
-        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Directory", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+directory") }, { name: displayName, item: location.href }] },
-        { levels: [{ name: fullName, item: location.origin + "/yulianti/" }, { name: "Archive", item: location.origin + "/yulianti/?q=" + encodeURIComponent(displayLower + "+archive") }, { name: displayName, item: location.href }] }
+        { levels: [{ name: fullName, item: location.origin + "/atikah/" }, { name: breadcrumbLabels[0], item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/atikah/" }, { name: "Files", item: location.origin + "/atikah/?q=" + encodeURIComponent(displayLower + "+files") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/atikah/" }, { name: "Directory", item: location.origin + "/atikah/?q=" + encodeURIComponent(displayLower + "+directory") }, { name: displayName, item: location.href }] },
+        { levels: [{ name: fullName, item: location.origin + "/atikah/" }, { name: "Archive", item: location.origin + "/atikah/?q=" + encodeURIComponent(displayLower + "+archive") }, { name: displayName, item: location.href }] }
     ], combinedSeed);
 
     var selectedBreadcrumb = breadcrumbVariants[0];
@@ -809,18 +809,18 @@ permalink: /yulianti/
     document.head.appendChild(faqScript);
 
     // ADDRESS BAR
-    var addressHtml = "<a href=\"/yulianti/\">" + fullName + "</a>";
+    var addressHtml = "<a href=\"/atikah/\">" + fullName + "</a>";
     addressHtml += "<span class=\"fm-address-sep\">&gt;</span>";
-    addressHtml += "<a href=\"/yulianti/?q=" + encodeURIComponent(displayLower) + "\">" + displayName + "</a>";
+    addressHtml += "<a href=\"/atikah/?q=" + encodeURIComponent(displayLower) + "\">" + displayName + "</a>";
     var folderParts = shuffleArray(["leaked-videos", "leaked-photos", "exclusive-media", "full-collection", "premium-archive", "private-content"], combinedSeed).slice(0, 2);
     for (var fp = 0; fp < folderParts.length; fp++) {
         addressHtml += "<span class=\"fm-address-sep\">&gt;</span>";
-        addressHtml += "<a href=\"/yulianti/?q=" + encodeURIComponent(displayLower + "+" + folderParts[fp]) + "\">" + formatName(folderParts[fp]) + "</a>";
+        addressHtml += "<a href=\"/atikah/?q=" + encodeURIComponent(displayLower + "+" + folderParts[fp]) + "\">" + formatName(folderParts[fp]) + "</a>";
     }
     document.getElementById("fm-address-path").innerHTML = addressHtml;
 
     // TOOLBAR
-    document.getElementById("fm-btn-back").href = "/yulianti/";
+    document.getElementById("fm-btn-back").href = "/atikah/";
     document.getElementById("fm-btn-refresh").href = location.href;
     document.getElementById("fm-btn-download-all").href = "/" + getPath(combinedSeed, 1) + "/?q=" + encodeURIComponent("download " + displayLower + " all files");
     document.getElementById("fm-btn-view-all").href = "/" + getPath(combinedSeed, 2) + "/?q=" + encodeURIComponent("view " + displayLower + " all content");
@@ -1043,7 +1043,7 @@ permalink: /yulianti/
 })();
 </script>
 
-{% include /kw/01.html %}
+
 {% include /ads/gobloggugel/sosmed.html %}
 </div>
 </body>
