@@ -346,7 +346,11 @@ layout: null
                     <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
                     <div class="featured-excerpt">{{ post.description }}</div>
                     {% assign before_svg = post.content | split: '<p>' | first %}
-                    <div class="excerpt spo">{{ before_svg }}</div>
+{% if before_svg != '' %}
+<div style="max-width:100%;overflow:hidden;word-break:break-word;overflow-wrap:break-word;">
+<div class="excerpt spo">{{ before_svg }}</div>
+</div>
+{% endif %}
                 </div>
             </div>
         </div>
@@ -367,7 +371,11 @@ layout: null
                         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
                         <div class="latest-meta">{{ post.date | date: "%b %d, %Y" }}</div>
                         {% assign before_svg = post.content | split: '<p>' | first %}
-                        <div class="excerpt spo">{{ before_svg }}</div>
+{% if before_svg != '' %}
+<div style="max-width:100%;overflow:hidden;word-break:break-word;overflow-wrap:break-word;">
+<div class="excerpt spo">{{ before_svg }}</div>
+</div>
+{% endif %}
                     </div>
                 </div>
                 {% endfor %}
@@ -390,7 +398,11 @@ layout: null
                         <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
                         <p>{{ post.description | truncate: 80 }}</p>
                         {% assign before_svg = post.content | split: '<p>' | first %}
-                        <div class="excerpt spo">{{ before_svg }}</div>
+{% if before_svg != '' %}
+<div style="max-width:100%;overflow:hidden;word-break:break-word;overflow-wrap:break-word;">
+<div class="excerpt spo">{{ before_svg }}</div>
+</div>
+{% endif %}
                     </div>
                 </div>
                 {% endfor %}
