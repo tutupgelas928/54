@@ -363,6 +363,215 @@ layout: null
         </div>
         {% endif %}
 
+<!-- Featured + Grid Homepage (7 Posts) -->
+
+<div id="homeFeaturedWrap">
+
+    {% assign main_post = site.categories.pisah01.first %}
+    {% assign side_posts = site.categories.pisah01 | offset: 1 | limit: 6 %}
+
+    <!-- Featured Post -->
+    {% if main_post %}
+    <div class="home-featured-main">
+
+        <a href="{{ main_post.url }}">
+            {% if main_post.image %}
+            <div class="home-featured-thumb">
+                <img
+                    src="{{ main_post.image | relative_url }}"
+                    alt="{{ main_post.title }}"
+                    loading="lazy">
+            </div>
+            {% endif %}
+        </a>
+
+        <div class="home-featured-content">
+            <h2 class="home-featured-title">
+                <a href="{{ main_post.url }}">
+                    {{ main_post.title }}
+                </a>
+            </h2>
+
+            {% if main_post.description %}
+            <p class="home-featured-desc">
+                {{ main_post.description }}
+            </p>
+            {% endif %}
+        </div>
+
+    </div>
+    {% endif %}
+
+    <!-- Grid Posts -->
+    <div class="home-featured-grid">
+
+        {% for post in side_posts %}
+        <div class="home-grid-card">
+
+            {% if post.image %}
+            <div class="home-grid-thumb">
+                <a href="{{ post.url }}">
+                    <img
+                        src="{{ post.image | relative_url }}"
+                        alt="{{ post.title }}"
+                        loading="lazy">
+                </a>
+            </div>
+            {% endif %}
+
+            <h3 class="home-grid-title">
+                <a href="{{ post.url }}">
+                    {{ post.title }}
+                </a>
+            </h3>
+
+            {% if post.description %}
+            <p class="home-grid-desc">
+                {{ post.description }}
+            </p>
+            {% endif %}
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<style>
+#homeFeaturedWrap {
+    margin-top: 40px;
+}
+
+/* Featured Main */
+.home-featured-main {
+    margin-bottom: 40px;
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.home-featured-thumb {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.home-featured-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.home-featured-content {
+    padding: 28px;
+}
+
+.home-featured-title {
+    font-size: 32px;
+    line-height: 1.3;
+    margin-bottom: 14px;
+}
+
+.home-featured-title a {
+    text-decoration: none;
+    color: #111;
+}
+
+.home-featured-desc {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #555;
+    margin: 0;
+}
+
+/* Grid Posts */
+.home-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.home-grid-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+    transition: 0.3s;
+}
+
+.home-grid-card:hover {
+    transform: translateY(-4px);
+}
+
+.home-grid-thumb {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.home-grid-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.home-grid-title {
+    font-size: 20px;
+    line-height: 1.4;
+    margin: 18px 18px 10px;
+}
+
+.home-grid-title a {
+    text-decoration: none;
+    color: #111;
+}
+
+.home-grid-desc {
+    padding: 0 18px 20px;
+    color: #666;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Mobile Friendly */
+@media (max-width: 768px) {
+    #homeFeaturedWrap {
+        margin-top: 24px;
+    }
+
+    .home-featured-main {
+        margin-bottom: 28px;
+    }
+
+    .home-featured-content {
+        padding: 20px;
+    }
+
+    .home-featured-title {
+        font-size: 24px;
+    }
+
+    .home-featured-desc {
+        font-size: 15px;
+    }
+
+    .home-grid-title {
+        font-size: 18px;
+    }
+
+    .home-grid-desc {
+        font-size: 14px;
+    }
+
+    .home-featured-grid {
+        gap: 18px;
+    }
+}
+</style>
+
         <!-- EXPLORE BY COUNTRY -->
         <div class="country-toggle" id="countryToggle" onclick="this.classList.toggle('open'); document.getElementById('countryWrap').classList.toggle('open');">
             <span class="toggle-arrow">&#9654;</span>
