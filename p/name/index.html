@@ -37,9 +37,6 @@ permalink: /name/
         nav.breadcrumb a{color:#888;text-decoration:none}
         nav.breadcrumb a:hover{color:#e94560}
         nav.breadcrumb span{color:#e0e0e0;font-weight:600}
-        nav.breadcrumb .spo{display:inline}
-        nav.breadcrumb .spo ul{list-style:none;display:inline-flex;flex-wrap:wrap;gap:0;padding:0;margin:0}
-        nav.breadcrumb .spo li{display:inline}
         .filter-bar{display:flex;align-items:center;gap:8px;padding:8px 12px;background:#1a1a1a;border-radius:8px;margin-bottom:12px;font-size:12px;color:#888}
         .filter-bar a{margin-left:auto;color:#e94560;text-decoration:none;font-weight:600}
         h1{font-size:20px;margin-bottom:4px;color:#fff}
@@ -214,7 +211,6 @@ permalink: /name/
         
         function hd(u){return u&&u.includes('googleusercontent.com')?u.replace(/\/s\d+(-c)?\//,'/s1600/'):u;}
         function altText(t,c){var p=[t];if(c&&c.length)p.push(c.join(', '));return p.filter(Boolean).join(' - ');}
-        
         function il(u){return u||'#';}
         
         function labelLink(label,isLabelPg){
@@ -266,7 +262,6 @@ permalink: /name/
             lb.classList.add('active');
             document.body.style.overflow='hidden';
             
-            // Related posts
             $('lbRelated').style.display='none';
             var alt=images[index]?.alt||'';
             var labelMatch=alt.match(/ - (.+)$/);
@@ -410,7 +405,7 @@ permalink: /name/
             for(var i=0;i<allLabels.length;i++){if(uniqueLabels.indexOf(allLabels[i])===-1)uniqueLabels.push(allLabels[i]);}
             
             if(uniqueLabels.length>0){
-                html+=' <span style="color:#666">&rsaquo;</span> <div class="spo"><ul>';
+                html+=' <span style="color:#666">&rsaquo;</span> <ul class="spo">';
                 for(var j=0;j<uniqueLabels.length;j++){
                     var lbl=uniqueLabels[j];
                     var isCurrent=(lbl===currentLabel);
@@ -422,7 +417,7 @@ permalink: /name/
                     if(j<uniqueLabels.length-1)html+=', ';
                     schemaItems.push({'@type':'ListItem','position':j+2,'name':lbl,'item':isCurrent?location.href:link});
                 }
-                html+='</ul></div>';
+                html+='</ul>';
             }
             
             $('breadcrumb').innerHTML=html;
