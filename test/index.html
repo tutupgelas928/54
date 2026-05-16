@@ -54,6 +54,7 @@ layout: null
         .post-card-meta{font-size:10px;color:#888;margin-top:4px}
         .post-card-label{display:inline-block;background:#1a1a1a;padding:1px 6px;border-radius:8px;font-size:9px;color:#999;text-decoration:none;margin-top:4px;cursor:pointer;position:relative;z-index:2}
         .post-card-label:hover{background:#333;color:#fff}
+        .no-img{aspect-ratio:2/3;background:#1a1a1a;display:none;align-items:center;justify-content:center;color:#555;font-size:12px}
         .pagination{display:flex;justify-content:center;gap:6px;margin-top:20px}
         .pagination a,.pagination span{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:6px;font-size:13px;text-decoration:none}
         .pagination a{background:#1a1a1a;color:#ccc}
@@ -140,82 +141,79 @@ layout: null
 
     <script>
     (function(){
-        const $=id=>document.getElementById(id);
-        const host=location.hostname;
-        const parts=host.split('.');
-        let dn=parts[0];
+        var $=function(id){return document.getElementById(id);};
+        var host=location.hostname;
+        var parts=host.split('.');
+        var dn=parts[0];
         if(parts.length>2&&parts[0]==='www')dn=parts[1];
-        dn=dn.replace(/[\.-]/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
-        const letters=dn.replace(/[^a-zA-Z0-9]/g,'').toUpperCase().substring(0,3)||'G';
+        dn=dn.replace(/[\.-]/g,' ').replace(/\b\w/g,function(c){return c.toUpperCase();});
+        var letters=dn.replace(/[^a-zA-Z0-9]/g,'').toUpperCase().substring(0,3)||'G';
         $('brandSvgText').textContent=letters;
         $('blogTitle').textContent=dn;
         
-        const menu=$('menuPanel'),im=$('iconMenu'),ic=$('iconClose');
-        let mo=false;
+        var menu=$('menuPanel'),im=$('iconMenu'),ic=$('iconClose');
+        var mo=false;
         $('menuToggle').onclick=function(e){
             e.stopPropagation();mo=!mo;
             menu.style.display=mo?'block':'none';
             im.style.display=mo?'none':'';ic.style.display=mo?'':'none';
-            if(mo){const r=this.getBoundingClientRect();menu.style.top=(r.bottom+4)+'px';menu.style.right=(innerWidth-r.right)+'px';}
+            if(mo){var r=this.getBoundingClientRect();menu.style.top=(r.bottom+4)+'px';menu.style.right=(innerWidth-r.right)+'px';}
         };
         document.onclick=function(e){if(mo&&!menu.contains(e.target)){mo=false;menu.style.display='none';im.style.display='';ic.style.display='none';}};
         
         // ============================================
         // ⚙️ KONFIGURASI ⚙️
         // ============================================
-        const ALL_BLOG_IDS = [
+        var ALL_BLOG_IDS=[
             '3849070220815751744',
             '3744972648234868485',
-            '3878198361264397837',
+            '3878198361264397837'
         ];
-        const MAX_POSTS_PER_PAGE = 24;
-        const DEFAULT_LABEL = '';
+        var MAX_POSTS_PER_PAGE=24;
+        var DEFAULT_LABEL='';
         
-        function seededShuffle(arr, seed){
-            const a = [...arr];
-            let s = seed;
-            for(let i = a.length - 1; i > 0; i--){
-                s = (s * 16807 + 0) % 2147483647;
-                const j = s % (i + 1);
-                [a[i], a[j]] = [a[j], a[i]];
+        function seededShuffle(arr,seed){
+            var a=arr.slice();
+            var s=seed;
+            for(var i=a.length-1;i>0;i--){
+                s=(s*16807+0)%2147483647;
+                var j=s%(i+1);
+                var tmp=a[i];a[i]=a[j];a[j]=tmp;
             }
             return a;
         }
         
         function hashDomain(h){
-            let hash = 0;
-            for(let i = 0; i < h.length; i++){
-                hash = ((hash << 5) - hash) + h.charCodeAt(i);
-                hash = hash & hash;
-            }
+            var hash=0;
+            for(var i=0;i<h.length;i++){hash=((hash<<5)-hash)+h.charCodeAt(i);hash=hash&hash;}
             return Math.abs(hash);
         }
         
-        const seed = hashDomain(host);
-        const BLOG_IDS = seededShuffle(ALL_BLOG_IDS, seed);
+        var seed=hashDomain(host);
+        var BLOG_IDS=seededShuffle(ALL_BLOG_IDS,seed);
         
-        const p=new URLSearchParams(location.search);
-        const POST_SLUG=p.get('p')||'';
-        const START=parseInt(p.get('start-index'))||1;
-        const MAX=parseInt(p.get('max-results'))||MAX_POSTS_PER_PAGE;
-        const LABEL=p.get('label')||DEFAULT_LABEL;
+        var p=new URLSearchParams(location.search);
+        var POST_SLUG=p.get('p')||'';
+        var START=parseInt(p.get('start-index'))||1;
+        var MAX=parseInt(p.get('max-results'))||MAX_POSTS_PER_PAGE;
+        var LABEL=p.get('label')||DEFAULT_LABEL;
         $('canonicalUrl').href=location.href;
         
-        function hd(u){return u&&u.includes('googleusercontent.com')?u.replace(/\/s\d+(-c)?\//,'/s1600/'):u}
-        function fd(d){try{return new Date(d).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}catch(e){return d}}
-        function altText(t,c){const p=[t];if(c&&c.length)p.push(c.join(', '));return p.filter(Boolean).join(' - ')}
+        function hd(u){return u&&u.includes('googleusercontent.com')?u.replace(/\/s\d+(-c)?\//,'/s1600/'):u;}
+        function fd(d){try{return new Date(d).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});}catch(e){return d;}}
+        function altText(t,c){var p=[t];if(c&&c.length)p.push(c.join(', '));return p.filter(Boolean).join(' - ');}
         
         function il(u){
             if(!u)return'#';
-            try{const ur=new URL(u);const slug=ur.pathname.split('/').pop().replace('.html','');return'/?p='+slug;}catch(e){}
+            try{var ur=new URL(u);var slug=ur.pathname.split('/').pop().replace('.html','');return'/?p='+slug;}catch(e){}
             return u;
         }
         
         // ============================================
         // LIGHTBOX
         // ============================================
-        let lbImages=[],lbIndex=0;
-        const lb=$('lightbox'),lbTrack=$('lbTrack'),lbCounter=$('lbCounter'),lbCaption=$('lbCaption');
+        var lbImages=[],lbIndex=0;
+        var lb=$('lightbox'),lbTrack=$('lbTrack'),lbCounter=$('lbCounter'),lbCaption=$('lbCaption');
         
         function openLightbox(images,index){
             lbImages=images;lbIndex=index;
@@ -231,14 +229,14 @@ layout: null
         }
         
         function renderLightbox(){
-            lbTrack.innerHTML=lbImages.map((img,i)=>{
-                const src=hd(img.src)||img.src;
-                const alt=img.alt||'Photo '+(i+1);
+            lbTrack.innerHTML=lbImages.map(function(img,i){
+                var src=hd(img.src)||img.src;
+                var alt=img.alt||'Photo '+(i+1);
                 return '<div class="lightbox-slide"><img src="'+src+'" alt="'+alt+'"></div>';
             }).join('');
             lbTrack.style.transform='translateX(-'+lbIndex*100+'%)';
             lbCounter.textContent=(lbIndex+1)+' / '+lbImages.length;
-            lbCaption.textContent=lbImages[lbIndex]?.alt||'';
+            lbCaption.textContent=lbImages[lbIndex]?lbImages[lbIndex].alt:'';
         }
         
         function nextImage(){if(lbIndex<lbImages.length-1){lbIndex++;renderLightbox();}}
@@ -256,53 +254,61 @@ layout: null
             if(e.key==='ArrowLeft')prevImage();
         };
         
-        let touchStartX=0;
-        lb.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;});
-        lb.addEventListener('touchend',e=>{
-            const diff=touchStartX-e.changedTouches[0].clientX;
+        var touchStartX=0;
+        lb.addEventListener('touchstart',function(e){touchStartX=e.touches[0].clientX;});
+        lb.addEventListener('touchend',function(e){
+            var diff=touchStartX-e.changedTouches[0].clientX;
             if(Math.abs(diff)>50){if(diff>0)nextImage();else prevImage();}
         });
         
         function attachLightbox(){
-            const allImages=document.querySelectorAll('.post-card-img');
-            const images=[];
-            allImages.forEach(img=>{
+            var allImages=document.querySelectorAll('.post-card-img');
+            var images=[];
+            allImages.forEach(function(img){
                 if(img.src&&!img.src.includes('data:image/svg+xml')){
-                    const alt=img.getAttribute('data-alt')||img.getAttribute('alt')||'Photo';
+                    var alt=img.getAttribute('data-alt')||img.getAttribute('alt')||'Photo';
                     images.push({src:img.src,alt:alt});
                     img.style.cursor='pointer';
-                    const idx=images.length-1;
+                    var idx=images.length-1;
                     img.onclick=function(e){e.preventDefault();e.stopPropagation();openLightbox(images,idx);};
                 }
             });
         }
         
         // ============================================
-        // RENDER CARD
+        // RENDER CARD - ALT DIPERBAIKI
         // ============================================
         function renderCard(e){
-            const t=e.title?.$t||'Untitled';
-            const link=il((e.link||[]).find(l=>l.rel==='alternate')?.href||'#');
-            const date=fd(e.published?.$t);
-            const content=e.content?.$t||e.summary?.$t||'';
-            const thumb=hd(e.media$thumbnail?.url)||(function(c){
+            var t=e.title?.$t||'Untitled';
+            var link=il((e.link||[]).find(function(l){return l.rel==='alternate';})?.href||'#');
+            var date=fd(e.published?.$t);
+            var content=e.content?.$t||e.summary?.$t||'';
+            var thumb=hd(e.media$thumbnail?.url)||(function(c){
                 if(!c)return null;
-                const d=document.createElement('div');d.innerHTML=c;
-                const i=d.querySelector('img');return i?hd(i.src):null;
+                var d=document.createElement('div');d.innerHTML=c;
+                var i=d.querySelector('img');return i?hd(i.src):null;
             })(content);
-            const cats=(e.category||[]).map(c=>c.term).filter(Boolean);
-            const imgAlt=altText(t,cats).replace(/"/g,'&quot;');
+            var cats=(e.category||[]).map(function(c){return c.term;}).filter(Boolean);
+            var imgAlt=altText(t,cats);
+            var imgAltSafe=imgAlt.replace(/"/g,'&quot;').replace(/'/g,'&#39;');
             
-            let html='<div class="post-card" onclick="location.href=\''+link+'\'">';
+            var html='<div class="post-card" onclick="location.href=\''+link+'\'">';
             if(thumb){
-                html+='<img class="post-card-img" src="'+thumb+'" alt="'+imgAlt+'" data-alt="'+imgAlt+'" loading="lazy" onerror="this.style.display=\'none\'">';
+                html+='<img class="post-card-img" src="'+thumb+'" alt="'+imgAltSafe+'" title="'+imgAltSafe+'" data-alt="'+imgAltSafe+'" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">';
+                html+='<div class="no-img">No Image</div>';
             }else{
-                html+='<div style="aspect-ratio:2/3;background:#1a1a1a;display:flex;align-items:center;justify-content:center;color:#555;font-size:12px">No Image</div>';
+                html+='<div class="no-img" style="display:flex">No Image</div>';
             }
             html+='<div class="post-card-info">';
             html+='<span class="post-card-title">'+t+'</span>';
             if(date)html+='<div class="post-card-meta">'+date+'</div>';
-            if(cats.length)html+='<div>'+cats.slice(0,2).map(function(c){return'<span class="post-card-label" onclick="event.stopPropagation();location.href=\'/?label='+c+'\'">'+c+'</span>';}).join('')+'</div>';
+            if(cats.length){
+                html+='<div>';
+                cats.slice(0,2).forEach(function(c){
+                    html+='<span class="post-card-label" onclick="event.stopPropagation();location.href=\'/?label='+c+'\'">'+c+'</span>';
+                });
+                html+='</div>';
+            }
             html+='</div></div>';
             return html;
         }
@@ -311,15 +317,15 @@ layout: null
         // MULTI BLOG FETCH
         // ============================================
         function fetchAllBlogs(callback,useLabel,pageStart,pageMax){
-            const allPosts=[];
-            let completed=0;
-            const totalBlogs=BLOG_IDS.length;
+            var allPosts=[];
+            var completed=0;
+            var totalBlogs=BLOG_IDS.length;
             
             if(totalBlogs===0){callback([],0);return;}
             
             BLOG_IDS.forEach(function(bid,idx){
-                const base='https://www.blogger.com/feeds/'+bid+'/posts/default';
-                const fp=new URLSearchParams();
+                var base='https://www.blogger.com/feeds/'+bid+'/posts/default';
+                var fp=new URLSearchParams();
                 fp.set('alt','json-in-script');
                 fp.set('callback','mb'+idx);
                 fp.set('max-results',pageMax);
@@ -327,14 +333,14 @@ layout: null
                 if(useLabel)fp.set('category',useLabel);
                 
                 window['mb'+idx]=function(data){
-                    const feed=data.feed;
+                    var feed=data.feed;
                     if(feed&&feed.entry){
-                        const entries=Array.isArray(feed.entry)?feed.entry:[feed.entry];
-                        allPosts.push.apply(allPosts,entries);
+                        var entries=Array.isArray(feed.entry)?feed.entry:[feed.entry];
+                        for(var i=0;i<entries.length;i++){allPosts.push(entries[i]);}
                     }
                     completed++;
                     if(completed>=totalBlogs){
-                        const shuffled=seededShuffle(allPosts,seed+pageStart);
+                        var shuffled=seededShuffle(allPosts,seed+pageStart);
                         callback(shuffled,allPosts.length);
                     }
                 };
@@ -345,7 +351,7 @@ layout: null
                 s.onerror=function(){
                     completed++;
                     if(completed>=totalBlogs){
-                        const shuffled=seededShuffle(allPosts,seed+pageStart);
+                        var shuffled=seededShuffle(allPosts,seed+pageStart);
                         callback(shuffled,allPosts.length);
                     }
                 };
@@ -363,21 +369,23 @@ layout: null
             if(document.referrer&&document.referrer.includes(host))$('backLink').href=document.referrer;
             $('pagination').style.display='none';
             
-            const pageId=POST_SLUG.replace(/-/g,' ');
+            var pageId=POST_SLUG.replace(/-/g,' ');
             document.title=pageId+' Leaked Photos & Viral Updates — '+dn;
             $('pageHeading').textContent=pageId;
             $('siteDesc').textContent='View latest '+pageId+' leaked photos, viral content, and exclusive updates on '+dn+'.';
             
-            var md=document.createElement('meta');md.name='description';md.content='View latest '+pageId+' leaked photos, viral content, and exclusive updates on '+dn+'. Browse the full collection.';document.head.appendChild(md);
+            var md=document.createElement('meta');md.name='description';
+            md.content='View latest '+pageId+' leaked photos, viral content, and exclusive updates on '+dn+'. Browse the full collection.';
+            document.head.appendChild(md);
             $('breadcrumb').innerHTML='<a href="/">Home</a> &rsaquo; <span>'+pageId+'</span>';
             
-            const rs=Math.floor(Math.random()*20)+1;
+            var rs=Math.floor(Math.random()*20)+1;
             fetchAllBlogs(function(posts){
-                const container=$('mainContent');
+                var container=$('mainContent');
                 if(!posts.length){container.innerHTML='<p class="empty">No posts found.</p>';return;}
-                const display=posts.slice(0,10);
-                let html='<p class="count-bar">Showing 10 random leaked photos from '+BLOG_IDS.length+' sources</p><div class="post-grid">';
-                for(let i=0;i<display.length;i++){html+=renderCard(display[i]);}
+                var display=posts.slice(0,10);
+                var html='<p class="count-bar">Showing 10 random leaked photos from '+BLOG_IDS.length+' sources</p><div class="post-grid">';
+                for(var i=0;i<display.length;i++){html+=renderCard(display[i]);}
                 html+='</div>';container.innerHTML=html;
                 attachLightbox();
             },'',rs,4);
@@ -387,32 +395,32 @@ layout: null
         // ============================================
         // GRID MODE
         // ============================================
-        const si=$('searchInput');if(si&&LABEL)si.value=LABEL;
+        var si=$('searchInput');if(si&&LABEL)si.value=LABEL;
         if(LABEL)$('searchHint').textContent='Showing results for: '+LABEL;
         else $('searchHint').textContent='Try: name leaked, viral, terbaru, exclusive';
         
         if(LABEL){
-            const il=/leak|viral|terbaru|exclusive|hot|terkini/i.test(LABEL);
-            let pt,pd;
-            if(il){pt=LABEL+' — '+dn;pd='View '+LABEL+' leaked photos, viral content, and exclusive updates on '+dn+'.';}
+            var il2=/leak|viral|terbaru|exclusive|hot|terkini/i.test(LABEL);
+            var pt,pd;
+            if(il2){pt=LABEL+' — '+dn;pd='View '+LABEL+' leaked photos, viral content, and exclusive updates on '+dn+'.';}
             else{pt=LABEL+' Leaked Photos & Viral Updates — '+dn;pd='View latest '+LABEL+' leaked photos, viral content, and exclusive updates on '+dn+'. Browse the full collection.';}
             document.title=pt;$('pageHeading').textContent=LABEL;$('siteDesc').textContent=pd;
-            var md=document.createElement('meta');md.name='description';md.content=pd;document.head.appendChild(md);
+            var md2=document.createElement('meta');md2.name='description';md2.content=pd;document.head.appendChild(md2);
             $('filterBar').style.display='flex';$('filterBar').innerHTML='Category: <strong>'+LABEL+'</strong> <a href="/">Clear</a>';
             $('breadcrumb').innerHTML='<a href="/">Home</a> &rsaquo; <span>'+LABEL+'</span>';
         }else{
             document.title=dn+' — Leaked Photos & Viral Collection';
             $('pageHeading').textContent=dn;$('siteDesc').textContent='Latest leaked photos, viral content, and exclusive updates. Browse the full collection.';
-            var md=document.createElement('meta');md.name='description';md.content='Latest leaked photos, viral content, and exclusive updates on '+dn+'. New photos added regularly.';document.head.appendChild(md);
+            var md3=document.createElement('meta');md3.name='description';md3.content='Latest leaked photos, viral content, and exclusive updates on '+dn+'. New photos added regularly.';document.head.appendChild(md3);
         }
         
-        const perBlog=Math.ceil(MAX/BLOG_IDS.length);
+        var perBlog=Math.ceil(MAX/BLOG_IDS.length);
         fetchAllBlogs(function(posts){
-            const container=$('mainContent');
+            var container=$('mainContent');
             if(!posts.length){container.innerHTML='<p class="empty">No posts found.</p>';return;}
-            const display=posts.slice(0,MAX);
-            let html='<p class="count-bar">Showing '+display.length+' leaked photos from '+BLOG_IDS.length+' sources</p><div class="post-grid">';
-            for(let i=0;i<display.length;i++){html+=renderCard(display[i]);}
+            var display=posts.slice(0,MAX);
+            var html='<p class="count-bar">Showing '+display.length+' leaked photos from '+BLOG_IDS.length+' sources</p><div class="post-grid">';
+            for(var i=0;i<display.length;i++){html+=renderCard(display[i]);}
             html+='</div>';container.innerHTML=html;
             attachLightbox();
             $('pagination').innerHTML='';
