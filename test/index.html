@@ -55,6 +55,27 @@ layout: null
         .post-card-label{display:inline-block;background:#1a1a1a;padding:1px 6px;border-radius:8px;font-size:9px;color:#999;text-decoration:none;margin-top:4px;cursor:pointer;position:relative;z-index:2}
         .post-card-label:hover{background:#333;color:#fff}
         .no-img{aspect-ratio:2/3;background:#1a1a1a;display:none;align-items:center;justify-content:center;color:#555;font-size:12px}
+
+        /* SINGLE POST */
+        .single-post-view{background:#111;padding:16px;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+        .single-post-view h1.post-title{font-size:20px;line-height:1.3;margin-bottom:10px;color:#fff}
+        .single-post-view .post-meta{font-size:11px;color:#888;margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid #222;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+        .single-post-view .post-body{font-size:14px;line-height:1.7;color:#ccc}
+        .single-post-view .post-body img{max-width:100%;height:auto;border-radius:6px;margin:8px 0;display:block;cursor:pointer}
+        .single-post-view .post-body a{color:#e94560;text-decoration:underline}
+        .single-post-view .post-body pre{background:#1a1a1a;padding:12px;border-radius:6px;overflow-x:auto;font-size:13px;margin:12px 0}
+        .single-post-view .post-body code{background:#1a1a1a;padding:2px 6px;border-radius:3px;font-size:13px}
+        .single-post-view .post-body blockquote{border-left:3px solid #e94560;padding:8px 12px;margin:12px 0;color:#999;background:#1a1a1a;border-radius:0 4px 4px 0}
+        .single-post-view .post-body h2,.single-post-view .post-body h3,.single-post-view .post-body h4{margin:16px 0 8px;color:#fff}
+        .single-post-view .post-body ul,.single-post-view .post-body ol{margin:8px 0 8px 20px}
+        .single-post-view .post-body li{margin:4px 0}
+        .single-post-view .post-body p{margin-bottom:10px}
+        .single-post-view .post-body table{width:100%;border-collapse:collapse;margin:12px 0}
+        .single-post-view .post-body td,.single-post-view .post-body th{border:1px solid #333;padding:8px;text-align:left}
+        .single-post-view .post-body th{background:#1a1a1a;font-weight:600}
+        .post-label-link{display:inline-block;background:#1a1a1a;padding:2px 8px;border-radius:10px;font-size:10px;color:#999;text-decoration:none}
+        .post-label-link:hover{background:#333;color:#fff}
+
         .pagination{display:flex;justify-content:center;gap:6px;margin-top:20px}
         .pagination a,.pagination span{display:inline-flex;align-items:center;justify-content:center;min-width:32px;height:32px;padding:0 8px;border-radius:6px;font-size:13px;text-decoration:none}
         .pagination a{background:#1a1a1a;color:#ccc}
@@ -80,7 +101,17 @@ layout: null
         .lightbox-prev{left:8px}.lightbox-next{right:8px}
         .lightbox-prev:active,.lightbox-next:active{background:rgba(255,255,255,0.2)}
         .lightbox-caption{position:absolute;bottom:16px;left:16px;right:16px;text-align:center;color:#ccc;font-size:12px;background:rgba(0,0,0,0.6);padding:8px 12px;border-radius:8px;line-height:1.3}
-        .post-card-img{cursor:pointer}
+        .post-card-img,.post-body img{cursor:pointer}
+
+        /* RELATED */
+        .related-section{margin-top:20px}
+        .related-section h3{font-size:15px;margin-bottom:10px;color:#fff}
+        .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+        @media(min-width:500px){.related-grid{grid-template-columns:repeat(4,1fr)}}
+        .related-card{background:#1a1a1a;border-radius:6px;overflow:hidden;text-decoration:none;display:block;transition:transform 0.2s}
+        .related-card:hover{transform:translateY(-2px)}
+        .related-card-img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;display:block}
+        .related-card-title{font-size:10px;font-weight:600;color:#ccc;padding:6px 8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     </style>
     {% include head.html %}
     {% include verif.html %}
@@ -232,7 +263,7 @@ layout: null
             lbTrack.innerHTML=lbImages.map(function(img,i){
                 var src=hd(img.src)||img.src;
                 var alt=img.alt||'Photo '+(i+1);
-                return '<div class="lightbox-slide"><img src="'+src+'" alt="'+alt+'"></div>';
+                return'<div class="lightbox-slide"><img src="'+src+'" alt="'+alt+'"></div>';
             }).join('');
             lbTrack.style.transform='translateX(-'+lbIndex*100+'%)';
             lbCounter.textContent=(lbIndex+1)+' / '+lbImages.length;
@@ -276,7 +307,7 @@ layout: null
         }
         
         // ============================================
-        // RENDER CARD - ALT DIPERBAIKI
+        // RENDER CARD
         // ============================================
         function renderCard(e){
             var t=e.title?.$t||'Untitled';
@@ -360,7 +391,7 @@ layout: null
         }
         
         // ============================================
-        // POST SLUG MODE
+        // POST SLUG MODE - SINGLE POST FULL
         // ============================================
         if(POST_SLUG){
             $('searchForm').style.display='none';
@@ -370,25 +401,130 @@ layout: null
             $('pagination').style.display='none';
             
             var pageId=POST_SLUG.replace(/-/g,' ');
-            document.title=pageId+' Leaked Photos & Viral Updates — '+dn;
             $('pageHeading').textContent=pageId;
-            $('siteDesc').textContent='View latest '+pageId+' leaked photos, viral content, and exclusive updates on '+dn+'.';
-            
-            var md=document.createElement('meta');md.name='description';
-            md.content='View latest '+pageId+' leaked photos, viral content, and exclusive updates on '+dn+'. Browse the full collection.';
-            document.head.appendChild(md);
+            $('siteDesc').textContent='Loading post...';
             $('breadcrumb').innerHTML='<a href="/">Home</a> &rsaquo; <span>'+pageId+'</span>';
             
-            var rs=Math.floor(Math.random()*20)+1;
-            fetchAllBlogs(function(posts){
+            var foundPost=null;
+            var fetchCompleted=0;
+            
+            BLOG_IDS.forEach(function(bid,idx){
+                var base='https://www.blogger.com/feeds/'+bid+'/posts/default';
+                var fp=new URLSearchParams();
+                fp.set('alt','json-in-script');
+                fp.set('callback','sp'+idx);
+                fp.set('max-results','50');
+                
+                window['sp'+idx]=function(data){
+                    var feed=data.feed;
+                    if(!foundPost&&feed&&feed.entry){
+                        var entries=Array.isArray(feed.entry)?feed.entry:[feed.entry];
+                        for(var i=0;i<entries.length;i++){
+                            var e=entries[i];
+                            var link=(e.link||[]).find(function(l){return l.rel==='alternate';})?.href||'';
+                            var slug=link.split('/').pop().replace('.html','');
+                            if(slug===POST_SLUG){
+                                foundPost=e;
+                                break;
+                            }
+                        }
+                    }
+                    fetchCompleted++;
+                    if(fetchCompleted>=BLOG_IDS.length){
+                        renderSinglePost(foundPost);
+                    }
+                };
+                
+                var s=document.createElement('script');
+                s.src=base+'?'+fp.toString();
+                s.async=true;
+                s.onerror=function(){
+                    fetchCompleted++;
+                    if(fetchCompleted>=BLOG_IDS.length)renderSinglePost(foundPost);
+                };
+                document.head.appendChild(s);
+            });
+            
+            function renderSinglePost(post){
                 var container=$('mainContent');
-                if(!posts.length){container.innerHTML='<p class="empty">No posts found.</p>';return;}
-                var display=posts.slice(0,10);
-                var html='<p class="count-bar">Showing 10 random leaked photos from '+BLOG_IDS.length+' sources</p><div class="post-grid">';
-                for(var i=0;i<display.length;i++){html+=renderCard(display[i]);}
-                html+='</div>';container.innerHTML=html;
-                attachLightbox();
-            },'',rs,4);
+                
+                if(!post){
+                    container.innerHTML='<p class="error">Post not found. <a href="/" style="color:#e94560">Back to home</a></p>';
+                    return;
+                }
+                
+                var title=post.title?.$t||'Untitled';
+                var date=fd(post.published?.$t);
+                var content=post.content?.$t||post.summary?.$t||'';
+                var cats=(post.category||[]).map(function(c){return c.term;}).filter(Boolean);
+                var author=post.author?.[0]?.name?.$t||'';
+                var imgAlt=altText(title,cats);
+                var imgAltSafe=imgAlt.replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+                
+                var leakedTerms=['leaked','leak','viral','terbaru','exclusive','hot','terkini'];
+                var hasLeaked=leakedTerms.some(function(t){return title.toLowerCase().includes(t);});
+                var seoTitle=title;
+                if(!hasLeaked&&cats.some(function(c){return leakedTerms.some(function(t){return c.toLowerCase().includes(t);});})){
+                    seoTitle=title+' Leaked Photos';
+                }else if(!hasLeaked){
+                    seoTitle=title+' Leaked';
+                }
+                
+                document.title=seoTitle+' — '+dn;
+                $('pageHeading').textContent=title;
+                $('siteDesc').textContent='View latest leaked photos of '+title+' on '+dn+'.';
+                
+                var md=document.createElement('meta');md.name='description';
+                md.content='View latest leaked photos, viral content, and exclusive updates of '+title+' on '+dn+'.';
+                document.head.appendChild(md);
+                
+                var breadHtml='<a href="/">Home</a>';
+                if(cats.length){
+                    breadHtml+=' &rsaquo; '+cats.slice(0,3).map(function(c){
+                        return'<a href="/?label='+c+'">'+c+'</a>';
+                    }).join(', ');
+                }
+                breadHtml+=' &rsaquo; <span>'+title+'</span>';
+                $('breadcrumb').innerHTML=breadHtml;
+                
+                var html='<article class="single-post-view">';
+                html+='<h1 class="post-title">'+title+'</h1>';
+                html+='<div class="post-meta">';
+                if(author)html+='<span>'+author+'</span>';
+                if(date)html+='<time datetime="'+(post.published?.$t||'')+'">'+date+'</time>';
+                if(cats.length)html+=cats.map(function(c){
+                    return'<a href="/?label='+c+'" class="post-label-link">'+c+'</a>';
+                }).join('');
+                html+='</div>';
+                
+                var fixedContent=content;
+                fixedContent=fixedContent.replace(/<img([^>]*)alt="([^"]*)"([^>]*)>/gi,function(match,before,oldAlt,after){
+                    return'<img'+before+'alt="'+imgAltSafe+'" title="'+imgAltSafe+'"'+after+'>';
+                });
+                fixedContent=fixedContent.replace(/<img((?:(?!alt=)[^>])*)>/gi,function(match,attrs){
+                    return'<img'+attrs+' alt="'+imgAltSafe+'" title="'+imgAltSafe+'">';
+                });
+                html+='<div class="post-body">'+fixedContent+'</div>';
+                html+='</article>';
+                
+                container.innerHTML=html;
+                $('pagination').innerHTML='';
+                
+                setTimeout(function(){
+                    var allImages=document.querySelectorAll('.post-body img');
+                    var images=[];
+                    allImages.forEach(function(img){
+                        if(img.src&&!img.src.includes('data:image')){
+                            var alt=img.getAttribute('alt')||imgAlt;
+                            images.push({src:img.src,alt:alt});
+                            img.style.cursor='pointer';
+                            var idx=images.length-1;
+                            img.onclick=function(e){e.preventDefault();openLightbox(images,idx);};
+                        }
+                    });
+                },100);
+            }
+            
             return;
         }
         
