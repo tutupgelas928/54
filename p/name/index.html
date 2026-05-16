@@ -63,6 +63,14 @@ permalink: /name/
         .single-post-view .post-body a{color:#e94560;text-decoration:underline}
         .post-label-link{display:inline-block;background:#1a1a1a;padding:2px 8px;border-radius:10px;font-size:10px;color:#999;text-decoration:none}
         .post-label-link:hover{background:#333;color:#fff}
+        .related-section{margin-top:20px}
+        .related-section h3{font-size:15px;margin-bottom:10px;color:#fff}
+        .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+        @media(min-width:500px){.related-grid{grid-template-columns:repeat(4,1fr)}}
+        .related-card{background:#1a1a1a;border-radius:6px;overflow:hidden;text-decoration:none;display:block;transition:transform 0.2s}
+        .related-card:hover{transform:translateY(-2px)}
+        .related-card-img{width:100%;height:auto;aspect-ratio:2/3;object-fit:cover;display:block}
+        .related-card-title{font-size:10px;font-weight:600;color:#ccc;padding:6px 8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
         .no-img{aspect-ratio:2/3;background:#1a1a1a;display:none;align-items:center;justify-content:center;color:#555;font-size:12px}
         .loading,.error,.empty{text-align:center;padding:40px 20px;color:#888;font-size:14px}
         .error{color:#e94560}
@@ -80,13 +88,7 @@ permalink: /name/
         .lightbox-prev,.lightbox-next{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:44px;height:44px;background:rgba(255,255,255,0.1);border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px}
         .lightbox-prev{left:8px}.lightbox-next{right:8px}
         .lightbox-prev:active,.lightbox-next:active{background:rgba(255,255,255,0.2)}
-        .lightbox-caption{position:absolute;bottom:80px;left:16px;right:16px;text-align:center;color:#ccc;font-size:12px;background:rgba(0,0,0,0.6);padding:8px 12px;border-radius:8px;line-height:1.3}
-        .lightbox-related{position:absolute;bottom:16px;left:16px;right:16px;z-index:5;display:none}
-        .lightbox-related p{font-size:10px;color:#888;margin-bottom:4px;text-align:center}
-        .lightbox-related .related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
-        .lightbox-related .related-card{background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;text-decoration:none;display:block}
-        .lightbox-related .related-card-img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}
-        .lightbox-related .related-card-title{font-size:9px;color:#ccc;padding:3px 5px;display:block;line-height:1.2}
+        .lightbox-caption{position:absolute;bottom:16px;left:16px;right:16px;text-align:center;color:#ccc;font-size:12px;background:rgba(0,0,0,0.6);padding:8px 12px;border-radius:8px;line-height:1.3}
         .post-card-img,.post-body img{cursor:pointer}
     </style>
     {% include head.html %}
@@ -143,10 +145,6 @@ permalink: /name/
         <button class="lightbox-next" id="lbNext">&rsaquo;</button>
         <div class="lightbox-track" id="lbTrack"></div>
         <div class="lightbox-caption" id="lbCaption"></div>
-        <div class="lightbox-related" id="lbRelated">
-            <p>Related Photos</p>
-            <div class="related-grid" id="lbRelatedGrid"></div>
-        </div>
     </div>
 
     <script type="application/ld+json" id="structuredData"></script>
@@ -207,10 +205,8 @@ permalink: /name/
         var START=parseInt(p.get('start-index'))||DEFAULT_START_INDEX;
         var MAX=parseInt(p.get('max-results'))||MAX_POSTS_PER_PAGE;
         var LABEL=p.get('label')||DEFAULT_LABEL;
-        var isLabelPage = LABEL ? true : false;
         $('canonicalUrl').href=location.href;
         
-        // RSS Feed
         $('rssFeed').href='https://www.blogger.com/feeds/'+BLOG_ID+'/posts/default?alt=rss';
         
         function hd(u){return u&&u.includes('googleusercontent.com')?u.replace(/\/s\d+(-c)?\//,'/s1600/'):u;}
@@ -223,13 +219,12 @@ permalink: /name/
             return u;
         }
         
-        function labelLink(label,isLabelPg){
-            if(isLabelPg){
-                if(host.includes('blogspot.com'))return 'https://'+host+'/search?q='+label;
-                else return 'https://www.blogger.com/feeds/'+BLOG_ID+'/posts/default?q='+label;
-            }else{
-                return BASE_PATH+'?label='+label;
-            }
+        function labelLink(label){
+            return BASE_PATH+'?label='+label;
+        }
+        
+        function bloggerLink(u){
+            return u||'#';
         }
         
         var base='https://www.blogger.com/feeds/'+BLOG_ID+'/posts/default';
@@ -240,52 +235,17 @@ permalink: /name/
         var lbImages=[],lbIndex=0;
         var lb=$('lightbox'),lbTrack=$('lbTrack'),lbCounter=$('lbCounter'),lbCaption=$('lbCaption');
         
-        function loadRelatedPosts(label){
-            var url=base+'?alt=json-in-script&callback=lbrp&max-results=4&category='+label;
-            
-            window.lbrp=function(data){
-                var feed=data.feed;
-                if(!feed||!feed.entry)return;
-                var entries=Array.isArray(feed.entry)?feed.entry:[feed.entry];
-                var grid=$('lbRelatedGrid');
-                var html='';
-                for(var i=0;i<entries.length;i++){
-                    var e=entries[i];
-                    var t=e.title?.$t||'Untitled';
-                    var thumb=hd(e.media$thumbnail?.url)||'';
-                    var link=il((e.link||[]).find(function(l){return l.rel==='alternate';})?.href||'#');
-                    html+='<a href="'+link+'" target="_blank" rel="noopener" class="related-card">';
-                    if(thumb)html+='<img class="related-card-img" src="'+thumb+'" alt="'+t+'" loading="lazy">';
-                    html+='<span class="related-card-title">'+t+'</span></a>';
-                }
-                grid.innerHTML=html;
-                $('lbRelated').style.display='block';
-            };
-            
-            var s=document.createElement('script');
-            s.src=url;s.async=true;
-            document.head.appendChild(s);
-        }
-        
         function openLightbox(images,index){
             lbImages=images;lbIndex=index;
             renderLightbox();
             lb.classList.add('active');
             document.body.style.overflow='hidden';
-            
-            $('lbRelated').style.display='none';
-            var alt=images[index]?.alt||'';
-            var labelMatch=alt.match(/ - (.+)$/);
-            if(labelMatch){
-                loadRelatedPosts(labelMatch[1].split(', ')[0]);
-            }
         }
         
         function closeLightbox(){
             lb.classList.remove('active');
             document.body.style.overflow='';
             lbImages=[];
-            $('lbRelated').style.display='none';
         }
         
         function renderLightbox(){
@@ -376,7 +336,7 @@ permalink: /name/
                 for(var j=0;j<uniqueLabels.length;j++){
                     var lbl=uniqueLabels[j];
                     var isCurrent=(lbl===currentLabel);
-                    var link=labelLink(lbl,isLabelPage);
+                    var link=labelLink(lbl);
                     html+='<li>';
                     if(isCurrent)html+='<span>'+lbl+'</span>';
                     else html+='<a href="'+link+'">'+lbl+'</a>';
@@ -392,7 +352,7 @@ permalink: /name/
         }
         
         // ============================================
-        // SINGLE POST MODE - FULL CONTENT
+        // SINGLE POST MODE - FULL CONTENT + RELATED
         // ============================================
         if(POST_SLUG){
             $('searchForm').style.display='none';
@@ -452,7 +412,7 @@ permalink: /name/
                 var breadHtml='<a href="'+BASE_PATH+'">Home</a>';
                 if(cats.length){
                     breadHtml+=' &rsaquo; '+cats.slice(0,3).map(function(c){
-                        return'<a href="'+BASE_PATH+'?label='+c+'">'+c+'</a>';
+                        return'<a href="'+labelLink(c)+'">'+c+'</a>';
                     }).join(', ');
                 }
                 breadHtml+=' &rsaquo; <span>'+title+'</span>';
@@ -464,7 +424,7 @@ permalink: /name/
                 if(author)html+='<span>'+author+'</span>';
                 if(date)html+='<time datetime="'+(post.published?.$t||'')+'">'+date+'</time>';
                 if(cats.length)html+=cats.map(function(c){
-                    return'<a href="'+BASE_PATH+'?label='+c+'" class="post-label-link">'+c+'</a>';
+                    return'<a href="'+labelLink(c)+'" class="post-label-link">'+c+'</a>';
                 }).join('');
                 html+='</div>';
                 
@@ -478,12 +438,37 @@ permalink: /name/
                 html+='<div class="post-body">'+fixedContent+'</div>';
                 html+='</article>';
                 
+                // Related posts
+                if(cats.length){
+                    var relatedPosts=entries.filter(function(e){
+                        var link=(e.link||[]).find(function(l){return l.rel==='alternate';})?.href||'';
+                        var slug=link.split('/').pop().replace('.html','');
+                        if(slug===POST_SLUG)return false;
+                        var eCats=(e.category||[]).map(function(c){return c.term;});
+                        return cats.some(function(c){return eCats.indexOf(c)!==-1;});
+                    }).slice(0,4);
+                    
+                    if(relatedPosts.length){
+                        html+='<div class="related-section"><h3>More Photos</h3><div class="related-grid">';
+                        relatedPosts.forEach(function(e){
+                            var t=e.title?.$t||'Untitled';
+                            var rlink=bloggerLink((e.link||[]).find(function(l){return l.rel==='alternate';})?.href||'#');
+                            var thumb=hd(e.media$thumbnail?.url);
+                            var eCats=(e.category||[]).map(function(c){return c.term;}).filter(Boolean);
+                            var rAlt=altText(t,eCats);
+                            
+                            html+='<a href="'+rlink+'" target="_blank" rel="noopener" class="related-card">';
+                            if(thumb)html+='<img class="related-card-img" src="'+thumb+'" alt="'+rAlt+'" loading="lazy" onerror="this.style.display=\'none\'">';
+                            html+='<span class="related-card-title">'+t+'</span></a>';
+                        });
+                        html+='</div></div>';
+                    }
+                }
+                
                 container.innerHTML=html;
                 $('pagination').innerHTML='';
                 
-                setTimeout(function(){
-                    attachLightbox();
-                },100);
+                setTimeout(function(){attachLightbox();},100);
             };
             
             var s=document.createElement('script');
